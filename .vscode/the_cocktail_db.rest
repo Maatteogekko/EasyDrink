@@ -1,0 +1,52 @@
+# https://www.thecocktaildb.com/api.php
+
+@baseUrl = https://www.thecocktaildb.com/api/json/v1/1
+
+# search by name
+GET {{baseUrl}}/search.php
+    ?s=long island
+###
+
+# filter by ingridient
+GET {{baseUrl}}/filter.php
+    ?i=Gin
+###
+
+# list ingridients
+GET {{baseUrl}}/list.php
+    ?i=list
+###
+
+# filter by alcoholic
+GET {{baseUrl}}/filter.php
+    ?a=Alcoholic
+###
+
+# filter by non alcoholic
+GET {{baseUrl}}/filter.php
+    ?a=Non_Alcoholic
+###
+
+# filter by category
+GET {{baseUrl}}/filter.php
+    ?c=Ordinary_Drink
+###
+
+# list categories
+GET {{baseUrl}}/list.php
+    ?c=list
+###
+
+
+# Drink thumbnails
+# Add /preview to the end of the cocktail image URL
+# www.thecocktaildb.com/images/media/drink/vrwquq1478252802.jpg/preview (100x100 pixels)
+
+
+# Ingredient Thumbnails
+# www.thecocktaildb.com/images/ingredients/gin-Small.png
+# (100x100 pixels)
+# www.thecocktaildb.com/images/ingredients/gin-Medium.png
+# (350x350 pixels)
+# www.thecocktaildb.com/images/ingredients/gin.png
+# (700x700 pixels)

@@ -1,0 +1,11 @@
+# generator file for the app icons. Run with:
+# flutter pub get
+# flutter pub run flutter_launcher_icons:main
+
+flutter_icons:
+  #iOS can't have opacity
+  remove_alpha_ios: true
+  ios: true
+  image_path: "assets/app_icon_ios.png"
+  #android done via android studio
+  android: false
