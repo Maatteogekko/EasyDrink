@@ -1,4 +1,6 @@
-import 'package:easy_drink/home/domain/cocktail.dart';
+import 'package:easy_drink/cocktail/domain/alcoholic.dart';
+import 'package:easy_drink/cocktail/domain/category.dart';
+import 'package:easy_drink/cocktail/domain/cocktail.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import '/core/extensions/list_extension.dart';
 

@@ -1,4 +1,4 @@
-import 'package:easy_drink/home/domain/cocktail.dart';
+import 'package:easy_drink/cocktail/domain/cocktail.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'cocktail_dto.dart';
