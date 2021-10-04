@@ -6,7 +6,6 @@ import 'package:easy_drink/cocktail/domain/cocktail.dart';
 import 'package:http/http.dart' as http;
 import '/core/extensions/list_extension.dart';
 
-import 'cocktail_dto.dart';
 import 'cocktail_filter_dto.dart';
 import 'filter_response_dto.dart';
 import 'response_dto.dart';

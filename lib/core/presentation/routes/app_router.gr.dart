@@ -5,6 +5,7 @@
 // **************************************************************************
 
 import 'package:auto_route/auto_route.dart' as _i3;
+import 'package:easy_drink/cocktail/domain/cocktail.dart' as _i8;
 import 'package:easy_drink/cocktail/presentation/cocktail_details_page.dart'
     as _i2;
 import 'package:easy_drink/main_view/core/presentation/main_view_page.dart'
@@ -27,14 +28,13 @@ class AppRouter extends _i3.RootStackRouter {
           routeData: routeData, child: const _i1.MainViewPage());
     },
     CocktailDetailRoute.name: (routeData) {
-      final pathParams = routeData.pathParams;
-      final args = routeData.argsAs<CocktailDetailRouteArgs>(
-          orElse: () => CocktailDetailRouteArgs(
-              cocktailId: pathParams.getString('cocktailId')));
+      final args = routeData.argsAs<CocktailDetailRouteArgs>();
       return _i3.AdaptivePage<dynamic>(
           routeData: routeData,
           child: _i2.CocktailDetailPage(
-              cocktailId: args.cocktailId, key: args.key));
+              cocktailId: args.cocktailId,
+              cocktail: args.cocktail,
+              key: args.key));
     },
     HomeRouter.name: (routeData) {
       return _i3.AdaptivePage<dynamic>(
@@ -89,19 +89,26 @@ class MainViewRoute extends _i3.PageRouteInfo<void> {
 
 /// generated route for [_i2.CocktailDetailPage]
 class CocktailDetailRoute extends _i3.PageRouteInfo<CocktailDetailRouteArgs> {
-  CocktailDetailRoute({required String cocktailId, _i7.Key? key})
+  CocktailDetailRoute(
+      {required String cocktailId,
+      required _i8.Cocktail cocktail,
+      _i7.Key? key})
       : super(name,
             path: ':cocktailId',
-            args: CocktailDetailRouteArgs(cocktailId: cocktailId, key: key),
+            args: CocktailDetailRouteArgs(
+                cocktailId: cocktailId, cocktail: cocktail, key: key),
             rawPathParams: {'cocktailId': cocktailId});
 
   static const String name = 'CocktailDetailRoute';
 }
 
 class CocktailDetailRouteArgs {
-  const CocktailDetailRouteArgs({required this.cocktailId, this.key});
+  const CocktailDetailRouteArgs(
+      {required this.cocktailId, required this.cocktail, this.key});
 
   final String cocktailId;
+
+  final _i8.Cocktail cocktail;
 
   final _i7.Key? key;
 }
