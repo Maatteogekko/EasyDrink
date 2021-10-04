@@ -3,6 +3,7 @@ import 'package:easy_drink/cocktail/domain/category.dart';
 import 'package:easy_drink/cocktail/domain/cocktail.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:transparent_image/transparent_image.dart';
 
 class CocktailCard extends StatelessWidget {
   const CocktailCard({
@@ -22,7 +23,7 @@ class CocktailCard extends StatelessWidget {
         margin: const EdgeInsets.all(6),
         width: 160,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(8),
+          borderRadius: BorderRadius.circular(16),
         ),
         child: Card(
           elevation: 5,
@@ -30,8 +31,10 @@ class CocktailCard extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              // TODO check fit
-              Image.network(cocktail.thumbnailUri),
+              FadeInImage.memoryNetwork(
+                placeholder: kTransparentImage,
+                image: cocktail.thumbnailUri,
+              ),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 6),
                 child: Text(
