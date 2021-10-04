@@ -1,4 +1,6 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:easy_drink/cocktail/domain/cocktail.dart';
+import 'package:easy_drink/core/presentation/routes/app_router.gr.dart';
 import 'package:flutter/material.dart';
 
 import 'cocktail_card.dart';
@@ -20,7 +22,9 @@ class CocktailListView extends StatelessWidget {
               .map((e) => CocktailCard(
                     cocktail: e,
                     // TODO add navigation(based on id) to detail page
-                    onTap: () {},
+                    onTap: () {
+                      AutoRouter.of(context).push(CocktailDetailRoute(cocktailId: e.id));
+                    },
                   ))
               .toList(),
         ),
