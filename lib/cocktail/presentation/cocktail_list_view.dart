@@ -12,15 +12,18 @@ class CocktailListView extends StatelessWidget {
   final List<Cocktail> cocktails;
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Wrap(
-        children: cocktails
-            .map((e) => CocktailCard(
-                  cocktail: e,
-                  // TODO add navigation(based on id) to detail page
-                  onTap: () {},
-                ))
-            .toList(),
+    return Center(
+      child: SingleChildScrollView(
+        child: Wrap(
+          alignment: WrapAlignment.start,
+          children: cocktails
+              .map((e) => CocktailCard(
+                    cocktail: e,
+                    // TODO add navigation(based on id) to detail page
+                    onTap: () {},
+                  ))
+              .toList(),
+        ),
       ),
     );
   }

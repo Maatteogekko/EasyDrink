@@ -26,7 +26,8 @@ class _$CocktailDTOTearOff {
       required String strDrink,
       required Category strCategory,
       required Alcoholic strAlcoholic,
-      required String strInstructionsIT,
+      required String strInstructions,
+      required String? strInstructionsIT,
       required String strDrinkThumb,
       String? strIngredient1,
       String? strIngredient2,
@@ -63,6 +64,7 @@ class _$CocktailDTOTearOff {
       strDrink: strDrink,
       strCategory: strCategory,
       strAlcoholic: strAlcoholic,
+      strInstructions: strInstructions,
       strInstructionsIT: strInstructionsIT,
       strDrinkThumb: strDrinkThumb,
       strIngredient1: strIngredient1,
@@ -112,7 +114,8 @@ mixin _$CocktailDTO {
   String get strDrink => throw _privateConstructorUsedError;
   Category get strCategory => throw _privateConstructorUsedError;
   Alcoholic get strAlcoholic => throw _privateConstructorUsedError;
-  String get strInstructionsIT => throw _privateConstructorUsedError;
+  String get strInstructions => throw _privateConstructorUsedError;
+  String? get strInstructionsIT => throw _privateConstructorUsedError;
   String get strDrinkThumb => throw _privateConstructorUsedError;
   String? get strIngredient1 => throw _privateConstructorUsedError;
   String? get strIngredient2 => throw _privateConstructorUsedError;
@@ -161,7 +164,8 @@ abstract class $CocktailDTOCopyWith<$Res> {
       String strDrink,
       Category strCategory,
       Alcoholic strAlcoholic,
-      String strInstructionsIT,
+      String strInstructions,
+      String? strInstructionsIT,
       String strDrinkThumb,
       String? strIngredient1,
       String? strIngredient2,
@@ -209,6 +213,7 @@ class _$CocktailDTOCopyWithImpl<$Res> implements $CocktailDTOCopyWith<$Res> {
     Object? strDrink = freezed,
     Object? strCategory = freezed,
     Object? strAlcoholic = freezed,
+    Object? strInstructions = freezed,
     Object? strInstructionsIT = freezed,
     Object? strDrinkThumb = freezed,
     Object? strIngredient1 = freezed,
@@ -259,10 +264,14 @@ class _$CocktailDTOCopyWithImpl<$Res> implements $CocktailDTOCopyWith<$Res> {
           ? _value.strAlcoholic
           : strAlcoholic // ignore: cast_nullable_to_non_nullable
               as Alcoholic,
+      strInstructions: strInstructions == freezed
+          ? _value.strInstructions
+          : strInstructions // ignore: cast_nullable_to_non_nullable
+              as String,
       strInstructionsIT: strInstructionsIT == freezed
           ? _value.strInstructionsIT
           : strInstructionsIT // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       strDrinkThumb: strDrinkThumb == freezed
           ? _value.strDrinkThumb
           : strDrinkThumb // ignore: cast_nullable_to_non_nullable
@@ -403,7 +412,8 @@ abstract class _$CocktailDTOCopyWith<$Res>
       String strDrink,
       Category strCategory,
       Alcoholic strAlcoholic,
-      String strInstructionsIT,
+      String strInstructions,
+      String? strInstructionsIT,
       String strDrinkThumb,
       String? strIngredient1,
       String? strIngredient2,
@@ -453,6 +463,7 @@ class __$CocktailDTOCopyWithImpl<$Res> extends _$CocktailDTOCopyWithImpl<$Res>
     Object? strDrink = freezed,
     Object? strCategory = freezed,
     Object? strAlcoholic = freezed,
+    Object? strInstructions = freezed,
     Object? strInstructionsIT = freezed,
     Object? strDrinkThumb = freezed,
     Object? strIngredient1 = freezed,
@@ -503,10 +514,14 @@ class __$CocktailDTOCopyWithImpl<$Res> extends _$CocktailDTOCopyWithImpl<$Res>
           ? _value.strAlcoholic
           : strAlcoholic // ignore: cast_nullable_to_non_nullable
               as Alcoholic,
+      strInstructions: strInstructions == freezed
+          ? _value.strInstructions
+          : strInstructions // ignore: cast_nullable_to_non_nullable
+              as String,
       strInstructionsIT: strInstructionsIT == freezed
           ? _value.strInstructionsIT
           : strInstructionsIT // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       strDrinkThumb: strDrinkThumb == freezed
           ? _value.strDrinkThumb
           : strDrinkThumb // ignore: cast_nullable_to_non_nullable
@@ -643,6 +658,7 @@ class _$_CocktailDTO extends _CocktailDTO {
       required this.strDrink,
       required this.strCategory,
       required this.strAlcoholic,
+      required this.strInstructions,
       required this.strInstructionsIT,
       required this.strDrinkThumb,
       this.strIngredient1,
@@ -689,7 +705,9 @@ class _$_CocktailDTO extends _CocktailDTO {
   @override
   final Alcoholic strAlcoholic;
   @override
-  final String strInstructionsIT;
+  final String strInstructions;
+  @override
+  final String? strInstructionsIT;
   @override
   final String strDrinkThumb;
   @override
@@ -755,7 +773,7 @@ class _$_CocktailDTO extends _CocktailDTO {
 
   @override
   String toString() {
-    return 'CocktailDTO(idDrink: $idDrink, strDrink: $strDrink, strCategory: $strCategory, strAlcoholic: $strAlcoholic, strInstructionsIT: $strInstructionsIT, strDrinkThumb: $strDrinkThumb, strIngredient1: $strIngredient1, strIngredient2: $strIngredient2, strIngredient3: $strIngredient3, strIngredient4: $strIngredient4, strIngredient5: $strIngredient5, strIngredient6: $strIngredient6, strIngredient7: $strIngredient7, strIngredient8: $strIngredient8, strIngredient9: $strIngredient9, strIngredient10: $strIngredient10, strIngredient11: $strIngredient11, strIngredient12: $strIngredient12, strIngredient13: $strIngredient13, strIngredient14: $strIngredient14, strIngredient15: $strIngredient15, strMeasure1: $strMeasure1, strMeasure2: $strMeasure2, strMeasure3: $strMeasure3, strMeasure4: $strMeasure4, strMeasure5: $strMeasure5, strMeasure6: $strMeasure6, strMeasure7: $strMeasure7, strMeasure8: $strMeasure8, strMeasure9: $strMeasure9, strMeasure10: $strMeasure10, strMeasure11: $strMeasure11, strMeasure12: $strMeasure12, strMeasure13: $strMeasure13, strMeasure14: $strMeasure14, strMeasure15: $strMeasure15)';
+    return 'CocktailDTO(idDrink: $idDrink, strDrink: $strDrink, strCategory: $strCategory, strAlcoholic: $strAlcoholic, strInstructions: $strInstructions, strInstructionsIT: $strInstructionsIT, strDrinkThumb: $strDrinkThumb, strIngredient1: $strIngredient1, strIngredient2: $strIngredient2, strIngredient3: $strIngredient3, strIngredient4: $strIngredient4, strIngredient5: $strIngredient5, strIngredient6: $strIngredient6, strIngredient7: $strIngredient7, strIngredient8: $strIngredient8, strIngredient9: $strIngredient9, strIngredient10: $strIngredient10, strIngredient11: $strIngredient11, strIngredient12: $strIngredient12, strIngredient13: $strIngredient13, strIngredient14: $strIngredient14, strIngredient15: $strIngredient15, strMeasure1: $strMeasure1, strMeasure2: $strMeasure2, strMeasure3: $strMeasure3, strMeasure4: $strMeasure4, strMeasure5: $strMeasure5, strMeasure6: $strMeasure6, strMeasure7: $strMeasure7, strMeasure8: $strMeasure8, strMeasure9: $strMeasure9, strMeasure10: $strMeasure10, strMeasure11: $strMeasure11, strMeasure12: $strMeasure12, strMeasure13: $strMeasure13, strMeasure14: $strMeasure14, strMeasure15: $strMeasure15)';
   }
 
   @override
@@ -774,6 +792,9 @@ class _$_CocktailDTO extends _CocktailDTO {
             (identical(other.strAlcoholic, strAlcoholic) ||
                 const DeepCollectionEquality()
                     .equals(other.strAlcoholic, strAlcoholic)) &&
+            (identical(other.strInstructions, strInstructions) ||
+                const DeepCollectionEquality()
+                    .equals(other.strInstructions, strInstructions)) &&
             (identical(other.strInstructionsIT, strInstructionsIT) ||
                 const DeepCollectionEquality()
                     .equals(other.strInstructionsIT, strInstructionsIT)) &&
@@ -823,10 +844,8 @@ class _$_CocktailDTO extends _CocktailDTO {
                 const DeepCollectionEquality()
                     .equals(other.strIngredient14, strIngredient14)) &&
             (identical(other.strIngredient15, strIngredient15) ||
-                const DeepCollectionEquality()
-                    .equals(other.strIngredient15, strIngredient15)) &&
-            (identical(other.strMeasure1, strMeasure1) ||
-                const DeepCollectionEquality().equals(other.strMeasure1, strMeasure1)) &&
+                const DeepCollectionEquality().equals(other.strIngredient15, strIngredient15)) &&
+            (identical(other.strMeasure1, strMeasure1) || const DeepCollectionEquality().equals(other.strMeasure1, strMeasure1)) &&
             (identical(other.strMeasure2, strMeasure2) || const DeepCollectionEquality().equals(other.strMeasure2, strMeasure2)) &&
             (identical(other.strMeasure3, strMeasure3) || const DeepCollectionEquality().equals(other.strMeasure3, strMeasure3)) &&
             (identical(other.strMeasure4, strMeasure4) || const DeepCollectionEquality().equals(other.strMeasure4, strMeasure4)) &&
@@ -850,6 +869,7 @@ class _$_CocktailDTO extends _CocktailDTO {
       const DeepCollectionEquality().hash(strDrink) ^
       const DeepCollectionEquality().hash(strCategory) ^
       const DeepCollectionEquality().hash(strAlcoholic) ^
+      const DeepCollectionEquality().hash(strInstructions) ^
       const DeepCollectionEquality().hash(strInstructionsIT) ^
       const DeepCollectionEquality().hash(strDrinkThumb) ^
       const DeepCollectionEquality().hash(strIngredient1) ^
@@ -900,7 +920,8 @@ abstract class _CocktailDTO extends CocktailDTO {
       required String strDrink,
       required Category strCategory,
       required Alcoholic strAlcoholic,
-      required String strInstructionsIT,
+      required String strInstructions,
+      required String? strInstructionsIT,
       required String strDrinkThumb,
       String? strIngredient1,
       String? strIngredient2,
@@ -946,7 +967,9 @@ abstract class _CocktailDTO extends CocktailDTO {
   @override
   Alcoholic get strAlcoholic => throw _privateConstructorUsedError;
   @override
-  String get strInstructionsIT => throw _privateConstructorUsedError;
+  String get strInstructions => throw _privateConstructorUsedError;
+  @override
+  String? get strInstructionsIT => throw _privateConstructorUsedError;
   @override
   String get strDrinkThumb => throw _privateConstructorUsedError;
   @override

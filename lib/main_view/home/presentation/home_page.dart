@@ -17,7 +17,7 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     Future.microtask(
-      () => context.read<CocktailsNotifier>().searchCocktail("cola"),
+      () => context.read<CocktailsNotifier>().searchCocktailByIngredient("Vodka"),
     );
   }
 
@@ -28,22 +28,20 @@ class _HomePageState extends State<HomePage> {
       headerHeight: 65,
       headerChild: const HeaderText("Home"),
       bodyColor: Colors.white,
-      bodyChild: Center(
-        child: Consumer<CocktailsNotifier>(
-          builder: (context, notifier, child) {
-            if (notifier.isLoading) {
-              return const Center(
-                child: CircularProgressIndicator.adaptive(),
-              );
-            }
-            // TODO add exception handling
-            else {
-              return CocktailListView(
-                cocktails: notifier.cocktails,
-              );
-            }
-          },
-        ),
+      bodyChild: Consumer<CocktailsNotifier>(
+        builder: (context, notifier, child) {
+          if (notifier.isLoading) {
+            return const Center(
+              child: CircularProgressIndicator.adaptive(),
+            );
+          }
+          // TODO add exception handling
+          else {
+            return CocktailListView(
+              cocktails: notifier.cocktails,
+            );
+          }
+        },
       ),
     );
   }

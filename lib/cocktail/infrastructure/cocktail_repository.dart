@@ -37,9 +37,8 @@ class CocktailRepository {
       // IMPROVE extract
       final json = jsonDecode(response.body) as Map<String, dynamic>;
       final drinksList = FilterResponseDTO.fromJson(json).drinks;
-      if (drinksList != null) {
-        _drinksToCoktails(drinksList);
-      }
+
+      cocktailList.addAllNotNull(await _drinksToCoktails(drinksList));
     } else {
       // TODO handle failure
     }
@@ -55,9 +54,8 @@ class CocktailRepository {
       // IMPROVE extract
       final json = jsonDecode(response.body) as Map<String, dynamic>;
       final drinksList = FilterResponseDTO.fromJson(json).drinks;
-      if (drinksList != null) {
-        _drinksToCoktails(drinksList);
-      }
+
+      cocktailList.addAllNotNull(await _drinksToCoktails(drinksList));
     } else {
       // TODO handle failure
     }
@@ -73,9 +71,8 @@ class CocktailRepository {
       // IMPROVE extract
       final json = jsonDecode(response.body) as Map<String, dynamic>;
       final drinksList = FilterResponseDTO.fromJson(json).drinks;
-      if (drinksList != null) {
-        _drinksToCoktails(drinksList);
-      }
+
+      cocktailList.addAllNotNull(await _drinksToCoktails(drinksList));
     } else {
       // TODO handle failure
     }
@@ -88,19 +85,21 @@ class CocktailRepository {
     final response = await http.get(uri);
     if (response.statusCode == 200) {
       final json = jsonDecode(response.body) as Map<String, dynamic>;
-      return CocktailDTO.fromJson(json).toDomain();
+      return ResponseDTO.fromJson(json).toDomain()?.single;
     } else {
       // TODO handle failure
       return null;
     }
   }
 
-  Future<List<Cocktail>> _drinksToCoktails(List<CocktailFilterDTO> drinksList) async {
+  Future<List<Cocktail>> _drinksToCoktails(List<CocktailFilterDTO>? drinksList) async {
     final List<Cocktail> cocktailList = [];
 
-    for (var drink in drinksList) {
-      final cocktail = await _getCocktailFromId(drink.idDrink);
-      cocktailList.addNotNull(cocktail);
+    if (drinksList != null) {
+      for (var drink in drinksList) {
+        final cocktail = await _getCocktailFromId(drink.idDrink);
+        cocktailList.addNotNull(cocktail);
+      }
     }
 
     return cocktailList;
