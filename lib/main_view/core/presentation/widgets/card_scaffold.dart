@@ -35,6 +35,7 @@ class CardScaffold extends StatelessWidget {
           Positioned.fill(
             top: headerHeight,
             child: Container(
+              clipBehavior: Clip.hardEdge,
               child: bodyChild,
               decoration: BoxDecoration(
                 color: bodyColor,

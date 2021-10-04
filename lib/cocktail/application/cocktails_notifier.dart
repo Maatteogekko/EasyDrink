@@ -1,5 +1,6 @@
 import 'package:easy_drink/cocktail/domain/cocktail.dart';
 import 'package:easy_drink/cocktail/infrastructure/cocktail_repository.dart';
+import 'package:easy_drink/core/extensions/list_extension.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -43,9 +44,19 @@ class CocktailsNotifier extends ChangeNotifier {
     notifyListeners();
 
     // TODO manage exception
-    _cocktails = await _repository.getCocktailsByIngredient(ingredient);
 
-    _isLoading = false;
+    int i = 0;
+    await for (final cocktail in _repository.getCocktailsByIngredient(ingredient)) {
+      _cocktails.addNotNull(cocktail);
+
+      if (i % 10 == 0) {
+        notifyListeners();
+      }
+    }
+
+    {
+      _isLoading = false;
+    }
     notifyListeners();
   }
 }

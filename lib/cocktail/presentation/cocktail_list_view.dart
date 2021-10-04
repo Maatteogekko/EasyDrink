@@ -3,37 +3,48 @@ import 'package:easy_drink/cocktail/application/cocktails_notifier.dart';
 import 'package:easy_drink/cocktail/domain/cocktail.dart';
 import 'package:easy_drink/core/presentation/routes/app_router.gr.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:provider/provider.dart';
 
 import 'cocktail_card.dart';
 
 class CocktailListView extends StatelessWidget {
   const CocktailListView({
-    required this.cocktails,
     Key? key,
   }) : super(key: key);
 
-  final List<Cocktail> cocktails;
+  // TODO add loading indicator
+  // IMPROVE load only when scrolled to bottom of the page. See /home/gekko/Desktop/repo_viewer/lib/github/repos/core/presentation/paginated_repos_list_view.dart
+
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: SingleChildScrollView(
-        child: Wrap(
-          alignment: WrapAlignment.start,
-          children: cocktails
-              .map((e) => CocktailCard(
+    return Consumer<CocktailsNotifier>(
+      builder: (context, notifier, child) {
+        // TODO add exception handling
+        return Center(
+          child: StaggeredGridView.countBuilder(
+            padding: const EdgeInsets.all(8),
+            crossAxisCount: 2,
+            staggeredTileBuilder: (index) => const StaggeredTile.fit(1),
+            itemCount: notifier.cocktails.length,
+            itemBuilder: (context, index) => notifier.cocktails
+                .map(
+                  (e) => CocktailCard(
                     cocktail: e,
-                    // TODO add navigation(based on id) to detail page
                     onTap: () {
-                      AutoRouter.of(context).push(CocktailDetailRoute(
-                        cocktailId: e.id,
-                        cocktail: e,
-                      ));
+                      AutoRouter.of(context).push(
+                        CocktailDetailRoute(
+                          cocktailId: e.id,
+                          cocktail: e,
+                        ),
+                      );
                     },
-                  ))
-              .toList(),
-        ),
-      ),
+                  ),
+                )
+                .toList()[index],
+          ),
+        );
+      },
     );
   }
 }

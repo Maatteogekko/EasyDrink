@@ -28,21 +28,21 @@ class CocktailRepository {
     return cocktailList;
   }
 
-  Future<List<Cocktail>> getCocktailsByIngredient(String ingredientName) async {
+  Stream<Cocktail?> getCocktailsByIngredient(String ingredientName) async* {
     final uri = Uri.parse(baseEndpoint + "/filter.php?i=$ingredientName");
     final response = await http.get(uri);
-    final List<Cocktail> cocktailList = [];
     if (response.statusCode == 200) {
       // IMPROVE extract
       final json = jsonDecode(response.body) as Map<String, dynamic>;
       final drinksList = FilterResponseDTO.fromJson(json).drinks;
-
-      cocktailList.addAllNotNull(await _drinksToCoktails(drinksList));
+      if (drinksList != null) {
+        for (var dto in drinksList) {
+          yield await _getCocktailFromId(dto.idDrink);
+        }
+      }
     } else {
       // TODO handle failure
     }
-
-    return cocktailList;
   }
 
   Future<List<Cocktail>> getCocktailsByAlcoholic(Alcoholic alcoholic) async {
