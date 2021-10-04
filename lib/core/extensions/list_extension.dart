@@ -5,9 +5,11 @@ extension ListX on List {
     }
   }
 
-  void addAllNotNull(Iterable<dynamic> elements) {
-    for (var element in elements) {
-      addNotNull(element);
+  void addAllNotNull(Iterable<dynamic>? elements) {
+    if (elements != null) {
+      for (var element in elements) {
+        addNotNull(element);
+      }
     }
   }
 }
