@@ -1,7 +1,7 @@
 import 'package:easy_drink/cocktail/application/cocktails_notifier.dart';
 import 'package:easy_drink/core/presentation/widgets/header_text.dart';
-import 'package:easy_drink/main_view/core/presentation/card_scaffold.dart';
-import 'package:easy_drink/main_view/core/presentation/widgets/cocktail_list_view.dart';
+import 'package:easy_drink/main_view/core/presentation/widgets/card_scaffold.dart';
+import 'package:easy_drink/cocktail/presentation/cocktail_list_view.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -29,8 +29,20 @@ class _HomePageState extends State<HomePage> {
       headerChild: const HeaderText("Home"),
       bodyColor: Colors.white,
       bodyChild: Center(
-        child: CocktailListView(
-          cocktails: context.watch<CocktailsNotifier>().cocktails,
+        child: Consumer<CocktailsNotifier>(
+          builder: (context, notifier, child) {
+            if (notifier.isLoading) {
+              return const Center(
+                child: CircularProgressIndicator.adaptive(),
+              );
+            }
+            // TODO add exception handling
+            else {
+              return CocktailListView(
+                cocktails: notifier.cocktails,
+              );
+            }
+          },
         ),
       ),
     );
