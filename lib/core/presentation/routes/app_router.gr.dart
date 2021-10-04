@@ -5,10 +5,13 @@
 // **************************************************************************
 
 import 'package:auto_route/auto_route.dart' as _i2;
-import 'package:easy_drink/favorites/presentation/favorites_page.dart' as _i4;
-import 'package:easy_drink/home/presentation/home_page.dart' as _i3;
-import 'package:easy_drink/main_view/presentation/main_view_page.dart' as _i1;
-import 'package:easy_drink/settings/presentation/settings_page.dart' as _i5;
+import 'package:easy_drink/main_view/core/presentation/main_view_page.dart'
+    as _i1;
+import 'package:easy_drink/main_view/favorites/presentation/favorites_page.dart'
+    as _i4;
+import 'package:easy_drink/main_view/home/presentation/home_page.dart' as _i3;
+import 'package:easy_drink/main_view/settings/presentation/settings_page.dart'
+    as _i5;
 import 'package:flutter/material.dart' as _i6;
 
 class AppRouter extends _i2.RootStackRouter {
