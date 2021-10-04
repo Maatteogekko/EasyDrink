@@ -7,12 +7,17 @@ GET {{baseUrl}}/search.php
     ?s=long island
 ###
 
-# filter by ingridient
+# get cocktail by id
+GET {{baseUrl}}/lookup.php
+    ?i=15300
+###
+
+# filter by ingredient
 GET {{baseUrl}}/filter.php
     ?i=Gin
 ###
 
-# list ingridients
+# list ingredients
 GET {{baseUrl}}/list.php
     ?i=list
 ###
@@ -36,6 +41,14 @@ GET {{baseUrl}}/filter.php
 GET {{baseUrl}}/list.php
     ?c=list
 ###
+
+# maybe add these
+
+# Lookup ingredient by ID
+# www.thecocktaildb.com/api/json/v1/1/lookup.php?iid=552
+
+# Lookup a random cocktail
+# www.thecocktaildb.com/api/json/v1/1/random.php
 
 
 # Drink thumbnails
