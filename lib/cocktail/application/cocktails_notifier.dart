@@ -35,9 +35,14 @@ class CocktailsNotifier extends ChangeNotifier {
     }
 
     _favoriteCocktails.add(cocktail);
+
+    notifyListeners();
   }
 
-  void removeFavorite(Cocktail cocktail) => _favoriteCocktails.remove(cocktail);
+  void removeFavorite(Cocktail cocktail) {
+    _favoriteCocktails.remove(cocktail);
+    notifyListeners();
+  }
 
   void searchCocktailByIngredient(String ingredient) async {
     _isLoading = true;

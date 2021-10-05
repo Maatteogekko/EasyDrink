@@ -12,6 +12,7 @@ Future<void> main() async {
     final license = await rootBundle.loadString('google_fonts/LICENSE.txt');
     yield LicenseEntryWithLineBreaks(['google_fonts'], license);
   });
+
   // TODO lock in portrait
 
   // TODO remove in production

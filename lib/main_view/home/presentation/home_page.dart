@@ -21,6 +21,8 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  // TODO implement search and filter
+
   @override
   Widget build(BuildContext context) {
     return CardScaffold(
@@ -28,7 +30,6 @@ class _HomePageState extends State<HomePage> {
       headerHeight: 65,
       headerChild: const HeaderText("Home"),
       bodyColor: Colors.white,
-      // ? integrate in CocktailListView
       bodyChild: CocktailListView(
         detailPageColor: Theme.of(context).primaryColor,
       ),

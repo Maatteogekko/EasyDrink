@@ -1,11 +1,13 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:collection/src/list_extensions.dart';
+import 'package:easy_drink/cocktail/application/cocktails_notifier.dart';
 import 'package:easy_drink/cocktail/domain/cocktail.dart';
 import 'package:easy_drink/core/presentation/widgets/header_text.dart';
 import 'package:easy_drink/main_view/core/presentation/widgets/card_scaffold.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:transparent_image/transparent_image.dart';
 
 class CocktailDetailPage extends StatelessWidget {
@@ -55,6 +57,44 @@ class CocktailDetailPage extends StatelessWidget {
               FadeInImage.memoryNetwork(
                 placeholder: kTransparentImage,
                 image: cocktail.imageUri,
+              ),
+              Positioned(
+                top: 280,
+                right: 20,
+                child: Container(
+                  height: 60,
+                  width: 60,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(16),
+                    color: Theme.of(context).primaryColor,
+                  ),
+                  child: Consumer<CocktailsNotifier>(
+                    builder: (context, notifier, child) {
+                      final isFavorite = notifier.favoriteCocktails.contains(cocktail);
+                      return ClipRRect(
+                        borderRadius: BorderRadius.circular(16),
+                        child: Material(
+                          color: Colors.transparent,
+                          child: IconButton(
+                            splashRadius: 40,
+                            onPressed: () {
+                              if (isFavorite) {
+                                notifier.removeFavorite(cocktail);
+                              } else {
+                                notifier.addFavorite(cocktail);
+                              }
+                            },
+                            icon: Icon(
+                              isFavorite ? Icons.star : Icons.star_border,
+                              color: Colors.amber,
+                              size: 40,
+                            ),
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                ),
               ),
               Positioned.fill(
                 top: 350,
