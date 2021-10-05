@@ -6,7 +6,7 @@
 
 import 'package:auto_route/auto_route.dart' as _i3;
 import 'package:easy_drink/cocktail/domain/cocktail.dart' as _i8;
-import 'package:easy_drink/cocktail/presentation/cocktail_details_page.dart'
+import 'package:easy_drink/cocktail/presentation/cocktail_detail_page.dart'
     as _i2;
 import 'package:easy_drink/main_view/core/presentation/main_view_page.dart'
     as _i1;
@@ -32,9 +32,7 @@ class AppRouter extends _i3.RootStackRouter {
       return _i3.AdaptivePage<dynamic>(
           routeData: routeData,
           child: _i2.CocktailDetailPage(
-              cocktailId: args.cocktailId,
-              cocktail: args.cocktail,
-              key: args.key));
+              cocktail: args.cocktail, color: args.color, key: args.key));
     },
     HomeRouter.name: (routeData) {
       return _i3.AdaptivePage<dynamic>(
@@ -75,7 +73,7 @@ class AppRouter extends _i3.RootStackRouter {
               path: 'settings',
               children: [_i3.RouteConfig(SettingsRoute.name, path: '')])
         ]),
-        _i3.RouteConfig(CocktailDetailRoute.name, path: ':cocktailId')
+        _i3.RouteConfig(CocktailDetailRoute.name, path: '/detail')
       ];
 }
 
@@ -90,25 +88,22 @@ class MainViewRoute extends _i3.PageRouteInfo<void> {
 /// generated route for [_i2.CocktailDetailPage]
 class CocktailDetailRoute extends _i3.PageRouteInfo<CocktailDetailRouteArgs> {
   CocktailDetailRoute(
-      {required String cocktailId,
-      required _i8.Cocktail cocktail,
-      _i7.Key? key})
+      {required _i8.Cocktail cocktail, required _i7.Color color, _i7.Key? key})
       : super(name,
-            path: ':cocktailId',
+            path: '/detail',
             args: CocktailDetailRouteArgs(
-                cocktailId: cocktailId, cocktail: cocktail, key: key),
-            rawPathParams: {'cocktailId': cocktailId});
+                cocktail: cocktail, color: color, key: key));
 
   static const String name = 'CocktailDetailRoute';
 }
 
 class CocktailDetailRouteArgs {
   const CocktailDetailRouteArgs(
-      {required this.cocktailId, required this.cocktail, this.key});
-
-  final String cocktailId;
+      {required this.cocktail, required this.color, this.key});
 
   final _i8.Cocktail cocktail;
+
+  final _i7.Color color;
 
   final _i7.Key? key;
 }

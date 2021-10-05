@@ -40,7 +40,10 @@ class CocktailCard extends StatelessWidget {
                 child: Text(
                   cocktail.name,
                   textAlign: TextAlign.center,
-                  style: GoogleFonts.roboto(fontSize: 20, fontWeight: FontWeight.w500),
+                  style: Theme.of(context).textTheme.headline4?.copyWith(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w500,
+                      ),
                 ),
               ),
               CocktailTile(

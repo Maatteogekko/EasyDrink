@@ -7,14 +7,14 @@ import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 class MainViewPage extends StatelessWidget {
   const MainViewPage({Key? key}) : super(key: key);
 
-  static const Map<int, Color> _colors = {
-    0: Colors.blue,
-    1: Colors.amber,
-    2: Colors.purple,
-  };
-
   @override
   Widget build(BuildContext context) {
+    final Map<int, Color> _colors = {
+      0: Theme.of(context).primaryColor,
+      1: Colors.amber,
+      2: Colors.purple,
+    };
+
     return SafeArea(
       child: AutoTabsScaffold(
         routes: const [
@@ -45,7 +45,7 @@ class MainViewPage extends StatelessWidget {
                 icon: const Icon(Icons.home_outlined),
                 title: const Text("Home"),
                 activeIcon: const Icon(Icons.home),
-                selectedColor: Colors.blue,
+                selectedColor: Theme.of(context).primaryColor,
               ),
               SalomonBottomBarItem(
                 icon: const Icon(Icons.star_border),

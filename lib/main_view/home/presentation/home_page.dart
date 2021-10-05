@@ -23,13 +23,15 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return const CardScaffold(
-      headerColor: Colors.blue,
+    return CardScaffold(
+      headerColor: Theme.of(context).primaryColor,
       headerHeight: 65,
-      headerChild: HeaderText("Home"),
+      headerChild: const HeaderText("Home"),
       bodyColor: Colors.white,
       // ? integrate in CocktailListView
-      bodyChild: CocktailListView(),
+      bodyChild: CocktailListView(
+        detailPageColor: Theme.of(context).primaryColor,
+      ),
     );
   }
 }

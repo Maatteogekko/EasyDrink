@@ -53,7 +53,8 @@ class CocktailDTO with _$CocktailDTO {
   factory CocktailDTO.fromJson(Map<String, dynamic> json) => _$CocktailDTOFromJson(json);
 
   Cocktail toDomain() {
-    final List<String> ingredients = []..addAllNotNull([
+    final List<String> ingredients = []
+      ..addAllNotNull([
         strIngredient1,
         strIngredient2,
         strIngredient3,
@@ -69,9 +70,11 @@ class CocktailDTO with _$CocktailDTO {
         strIngredient13,
         strIngredient14,
         strIngredient15,
-      ]);
+      ])
+      ..removeWhere((element) => element.isEmpty);
 
-    final List<String> measures = []..addAllNotNull([
+    final List<String> measures = []
+      ..addAllNotNull([
         strMeasure1,
         strMeasure2,
         strMeasure3,
@@ -87,7 +90,8 @@ class CocktailDTO with _$CocktailDTO {
         strMeasure13,
         strMeasure14,
         strMeasure15,
-      ]);
+      ])
+      ..removeWhere((element) => element.isEmpty);
 
     return Cocktail(
       id: idDrink,

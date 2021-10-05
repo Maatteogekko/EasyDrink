@@ -24,11 +24,12 @@ class CardScaffold extends StatelessWidget {
     return SizedBox.expand(
       child: Stack(
         children: [
-          Positioned.fill(
+          Positioned(
             child: Container(
               color: headerColor,
               child: headerChild,
               height: headerHeight + 30,
+              width: double.infinity,
               padding: const EdgeInsets.only(bottom: 30),
             ),
           ),

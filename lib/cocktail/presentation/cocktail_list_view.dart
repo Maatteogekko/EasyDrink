@@ -10,8 +10,11 @@ import 'cocktail_card.dart';
 
 class CocktailListView extends StatelessWidget {
   const CocktailListView({
+    required this.detailPageColor,
     Key? key,
   }) : super(key: key);
+
+  final Color detailPageColor;
 
   // IMPROVE load only when scrolled to bottom of the page. See /home/gekko/Desktop/repo_viewer/lib/github/repos/core/presentation/paginated_repos_list_view.dart
 
@@ -39,8 +42,8 @@ class CocktailListView extends StatelessWidget {
                       onTap: () {
                         AutoRouter.of(context).push(
                           CocktailDetailRoute(
-                            cocktailId: e.id,
                             cocktail: e,
+                            color: detailPageColor,
                           ),
                         );
                       },

@@ -19,10 +19,7 @@ class HeaderText extends StatelessWidget {
       ),
       child: Text(
         text,
-        style: GoogleFonts.roboto(
-          textStyle: Theme.of(context).textTheme.headline4,
-          color: Colors.white,
-        ),
+        style: Theme.of(context).textTheme.headline4?.copyWith(color: Colors.white),
       ),
     );
   }

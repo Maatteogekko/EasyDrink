@@ -5,6 +5,8 @@ import 'core/presentation/app_widget.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  // TODO lock in portrait
+
   // TODO remove in production
   await Wakelock.enable();
 
