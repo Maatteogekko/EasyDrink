@@ -13,37 +13,43 @@ class CocktailListView extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
-  // TODO add loading indicator
   // IMPROVE load only when scrolled to bottom of the page. See /home/gekko/Desktop/repo_viewer/lib/github/repos/core/presentation/paginated_repos_list_view.dart
 
   @override
   Widget build(BuildContext context) {
     return Consumer<CocktailsNotifier>(
       builder: (context, notifier, child) {
+        if (notifier.isLoading) {
+          return const Center(
+            child: CircularProgressIndicator.adaptive(),
+          );
+        }
         // TODO add exception handling
-        return Center(
-          child: StaggeredGridView.countBuilder(
-            padding: const EdgeInsets.all(8),
-            crossAxisCount: 2,
-            staggeredTileBuilder: (index) => const StaggeredTile.fit(1),
-            itemCount: notifier.cocktails.length,
-            itemBuilder: (context, index) => notifier.cocktails
-                .map(
-                  (e) => CocktailCard(
-                    cocktail: e,
-                    onTap: () {
-                      AutoRouter.of(context).push(
-                        CocktailDetailRoute(
-                          cocktailId: e.id,
-                          cocktail: e,
-                        ),
-                      );
-                    },
-                  ),
-                )
-                .toList()[index],
-          ),
-        );
+        else {
+          return Center(
+            child: StaggeredGridView.countBuilder(
+              padding: const EdgeInsets.all(8),
+              crossAxisCount: 2,
+              staggeredTileBuilder: (index) => const StaggeredTile.fit(1),
+              itemCount: notifier.cocktails.length,
+              itemBuilder: (context, index) => notifier.cocktails
+                  .map(
+                    (e) => CocktailCard(
+                      cocktail: e,
+                      onTap: () {
+                        AutoRouter.of(context).push(
+                          CocktailDetailRoute(
+                            cocktailId: e.id,
+                            cocktail: e,
+                          ),
+                        );
+                      },
+                    ),
+                  )
+                  .toList()[index],
+            ),
+          );
+        }
       },
     );
   }

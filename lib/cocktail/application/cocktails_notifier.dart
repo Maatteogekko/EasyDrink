@@ -49,14 +49,14 @@ class CocktailsNotifier extends ChangeNotifier {
     await for (final cocktail in _repository.getCocktailsByIngredient(ingredient)) {
       _cocktails.addNotNull(cocktail);
 
-      if (i % 10 == 0) {
+      if (i % 10 == 0 && i != 0) {
+        // HACK here it doesn't really stop loading
+        _isLoading = false;
         notifyListeners();
       }
+      i++;
     }
 
-    {
-      _isLoading = false;
-    }
     notifyListeners();
   }
 }
