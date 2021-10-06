@@ -39,6 +39,7 @@ class CocktailDetailPage extends StatelessWidget {
               title: FittedBox(child: HeaderText(cocktail.name)),
               centerTitle: true,
               automaticallyImplyLeading: false,
+              // ? use AutoBackButton()
               leading: IconButton(
                 splashRadius: 30,
                 onPressed: () {

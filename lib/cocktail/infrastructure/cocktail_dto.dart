@@ -52,6 +52,48 @@ class CocktailDTO with _$CocktailDTO {
 
   factory CocktailDTO.fromJson(Map<String, dynamic> json) => _$CocktailDTOFromJson(json);
 
+  factory CocktailDTO.fromDomain(Cocktail _) {
+    return CocktailDTO(
+      idDrink: _.id,
+      strDrink: _.name,
+      strCategory: _.category,
+      strAlcoholic: _.alchoholic,
+      strInstructions: _.instructions,
+      strInstructionsIT: _.instructions,
+      strDrinkThumb: _.imageUri,
+      strIngredient1: _.ingredients.safeGet(0),
+      strIngredient2: _.ingredients.safeGet(1),
+      strIngredient3: _.ingredients.safeGet(2),
+      strIngredient4: _.ingredients.safeGet(3),
+      strIngredient5: _.ingredients.safeGet(4),
+      strIngredient6: _.ingredients.safeGet(5),
+      strIngredient7: _.ingredients.safeGet(6),
+      strIngredient8: _.ingredients.safeGet(7),
+      strIngredient9: _.ingredients.safeGet(8),
+      strIngredient10: _.ingredients.safeGet(9),
+      strIngredient11: _.ingredients.safeGet(10),
+      strIngredient12: _.ingredients.safeGet(11),
+      strIngredient13: _.ingredients.safeGet(12),
+      strIngredient14: _.ingredients.safeGet(13),
+      strIngredient15: _.ingredients.safeGet(14),
+      strMeasure1: _.measures.safeGet(0),
+      strMeasure2: _.measures.safeGet(1),
+      strMeasure3: _.measures.safeGet(2),
+      strMeasure4: _.measures.safeGet(3),
+      strMeasure5: _.measures.safeGet(4),
+      strMeasure6: _.measures.safeGet(5),
+      strMeasure7: _.measures.safeGet(6),
+      strMeasure8: _.measures.safeGet(7),
+      strMeasure9: _.measures.safeGet(8),
+      strMeasure10: _.measures.safeGet(9),
+      strMeasure11: _.measures.safeGet(10),
+      strMeasure12: _.measures.safeGet(11),
+      strMeasure13: _.measures.safeGet(12),
+      strMeasure14: _.measures.safeGet(13),
+      strMeasure15: _.measures.safeGet(14),
+    );
+  }
+
   Cocktail toDomain() {
     final List<String> ingredients = []
       ..addAllNotNull([

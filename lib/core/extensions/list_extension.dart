@@ -12,4 +12,11 @@ extension ListX on List {
       }
     }
   }
+
+  T? safeGet<T>(int index) {
+    if (index < length) {
+      return this[index];
+    }
+    return null;
+  }
 }

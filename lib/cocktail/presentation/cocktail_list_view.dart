@@ -7,7 +7,7 @@ import 'package:provider/provider.dart';
 
 import 'cocktail_card.dart';
 
-class CocktailListView extends StatelessWidget {
+class CocktailListView extends StatefulWidget {
   const CocktailListView({
     required this.detailPageColor,
     this.isFavorites = false,
@@ -15,15 +15,33 @@ class CocktailListView extends StatelessWidget {
   }) : super(key: key);
 
   final Color detailPageColor;
+
+  // HACK a parametric (favorite or not) CocktailNotifier would be much better
   final bool isFavorites;
 
-  // IMPROVE load only when scrolled to bottom of the page. See /home/gekko/Desktop/repo_viewer/lib/github/repos/core/presentation/paginated_repos_list_view.dart
+  @override
+  State<CocktailListView> createState() => _CocktailListViewState();
+}
+
+class _CocktailListViewState extends State<CocktailListView> {
+  @override
+  void initState() {
+    super.initState();
+    if (widget.isFavorites) {
+      Future.microtask(
+        () => context.read<CocktailsNotifier>().getFavoritesFromDatabase(),
+      );
+    } else {
+      // TODO load random cocktails
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Consumer<CocktailsNotifier>(
       builder: (context, notifier, child) {
-        if (notifier.isLoading) {
+        // TODO check if the ternary expression is working
+        if ((widget.isFavorites ? notifier.isLoadingFavorites : notifier.isLoading)) {
           return const Center(
             child: CircularProgressIndicator.adaptive(),
           );
@@ -35,10 +53,11 @@ class CocktailListView extends StatelessWidget {
               padding: const EdgeInsets.all(8),
               crossAxisCount: 2,
               staggeredTileBuilder: (index) => const StaggeredTile.fit(1),
-              itemCount:
-                  (isFavorites ? notifier.favoriteCocktails.length : notifier.cocktails.length),
+              itemCount: (widget.isFavorites
+                  ? notifier.favoriteCocktails.length
+                  : notifier.cocktails.length),
               itemBuilder: (context, index) =>
-                  (isFavorites ? notifier.favoriteCocktails : notifier.cocktails)
+                  (widget.isFavorites ? notifier.favoriteCocktails : notifier.cocktails)
                       .map(
                         (e) => CocktailCard(
                           cocktail: e,
@@ -46,7 +65,7 @@ class CocktailListView extends StatelessWidget {
                             AutoRouter.of(context).push(
                               CocktailDetailRoute(
                                 cocktail: e,
-                                color: detailPageColor,
+                                color: widget.detailPageColor,
                               ),
                             );
                           },
