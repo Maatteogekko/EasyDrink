@@ -26,12 +26,29 @@ class CocktailsNotifier extends ChangeNotifier {
   bool _isLoadingFavorites = false;
   bool get isLoadingFavorites => _isLoadingFavorites;
 
-  Future searchCocktailByName(String name) async {
+  Future<void> searchCocktailByName(String name) async {
+    _cocktails.clear();
+
     _isLoading = true;
     notifyListeners();
 
     // TODO manage exception
     _cocktails = await _repository.getCocktailsByName(name);
+
+    _isLoading = false;
+    notifyListeners();
+  }
+
+  Future<void> getRandoms() async {
+    _cocktails.clear();
+
+    _isLoading = true;
+    notifyListeners();
+
+    // TODO manage exception
+    for (var i = 0; i < 2; i++) {
+      _cocktails.addNotNull(await _repository.getRandomCocktail());
+    }
 
     _isLoading = false;
     notifyListeners();
@@ -56,6 +73,8 @@ class CocktailsNotifier extends ChangeNotifier {
   }
 
   void searchCocktailByIngredient(String ingredient) async {
+    _cocktails.clear();
+
     _isLoading = true;
     notifyListeners();
 

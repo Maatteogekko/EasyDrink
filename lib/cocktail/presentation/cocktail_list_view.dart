@@ -10,11 +10,13 @@ import 'cocktail_card.dart';
 class CocktailListView extends StatefulWidget {
   const CocktailListView({
     required this.detailPageColor,
+    this.action,
     this.isFavorites = false,
     Key? key,
   }) : super(key: key);
 
   final Color detailPageColor;
+  final Future<void> Function()? action;
 
   // HACK a parametric (favorite or not) CocktailNotifier would be much better
   final bool isFavorites;
@@ -27,20 +29,13 @@ class _CocktailListViewState extends State<CocktailListView> {
   @override
   void initState() {
     super.initState();
-    if (widget.isFavorites) {
-      Future.microtask(
-        () => context.read<CocktailsNotifier>().getFavoritesFromDatabase(),
-      );
-    } else {
-      // TODO load random cocktails
-    }
+    Future.microtask(() => widget.action?.call());
   }
 
   @override
   Widget build(BuildContext context) {
     return Consumer<CocktailsNotifier>(
       builder: (context, notifier, child) {
-        // TODO check if the ternary expression is working
         if ((widget.isFavorites ? notifier.isLoadingFavorites : notifier.isLoading)) {
           return const Center(
             child: CircularProgressIndicator.adaptive(),

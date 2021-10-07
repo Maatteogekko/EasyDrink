@@ -42,13 +42,16 @@ GET {{baseUrl}}/list.php
     ?c=list
 ###
 
+# Lookup a random cocktail
+GET {{baseUrl}}/random.php
+###
+
+
 # maybe add these
 
 # Lookup ingredient by ID
 # www.thecocktaildb.com/api/json/v1/1/lookup.php?iid=552
 
-# Lookup a random cocktail
-# www.thecocktaildb.com/api/json/v1/1/random.php
 
 
 # Drink thumbnails
