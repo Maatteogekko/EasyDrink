@@ -13,6 +13,18 @@ import 'response_dto.dart';
 class CocktailRepository {
   static const baseEndpoint = "https://www.thecocktaildb.com/api/json/v1/1";
 
+  Future<Cocktail?> getRandomCocktail() async {
+    final uri = Uri.parse(baseEndpoint + "/random.php");
+    final response = await http.get(uri);
+    if (response.statusCode == 200) {
+      final json = jsonDecode(response.body) as Map<String, dynamic>;
+      final cocktails = ResponseDTO.fromJson(json).toDomain();
+      return cocktails?.first;
+    } else {
+      // TODO handle failure
+    }
+  }
+
   Future<List<Cocktail>> getCocktailsByName(String name) async {
     final uri = Uri.parse(baseEndpoint + "/search.php?s=$name");
     final response = await http.get(uri);
