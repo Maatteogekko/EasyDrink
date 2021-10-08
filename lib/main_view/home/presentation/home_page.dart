@@ -14,7 +14,7 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-// TODO implement search and filter
+// TODO implement filter
 class _HomePageState extends State<HomePage> {
   late FloatingSearchBarController _controller;
   String? _query;
@@ -55,13 +55,6 @@ class _HomePageState extends State<HomePage> {
         },
         actions: [
           _searchbarAction,
-          // FloatingSearchBarAction.icon(
-          //   icon: Icons.close_rounded,
-          //   onTap: () {
-          //     _controller.clear();
-          //   },
-          //   showIfClosed: _query == null ? false : true,
-          // ),
         ],
         controller: _controller,
         title: HeaderText(_query ?? 'Home'),
