@@ -8,12 +8,14 @@ class SearchBar extends StatelessWidget {
     required this.title,
     required this.body,
     required this.onSubmitted,
+    this.actions,
   }) : super(key: key);
 
   final FloatingSearchBarController controller;
   final Widget title;
   final Widget body;
   final void Function(String)? onSubmitted;
+  final List<Widget>? actions;
 
   @override
   Widget build(BuildContext context) {
@@ -33,11 +35,7 @@ class SearchBar extends StatelessWidget {
       liftOnScrollElevation: 0,
       elevation: 0,
       title: FittedBox(child: title),
-      actions: [
-        FloatingSearchBarAction.searchToClear(
-          size: 28,
-        ),
-      ],
+      actions: actions,
       body: body,
     );
   }

@@ -17,15 +17,15 @@ class HomePage extends StatefulWidget {
 // TODO implement search and filter
 class _HomePageState extends State<HomePage> {
   late FloatingSearchBarController _controller;
-  var _query = '';
+  String? _query;
 
   @override
   void initState() {
     super.initState();
     _controller = FloatingSearchBarController();
-    // Future.microtask(
-    //   () => context.read<CocktailsNotifier>().searchCocktailByIngredient("Vodka"),
-    // );
+    Future.microtask(
+      () => context.read<CocktailsNotifier>().getRandoms(),
+    );
   }
 
   @override
@@ -40,51 +40,108 @@ class _HomePageState extends State<HomePage> {
       resizeToAvoidBottomInset: false,
       body: SearchBar(
         onSubmitted: (query) {
-          context.read<CocktailsNotifier>().searchCocktailByName(query);
           _controller.close();
-          setState(() {
-            _query = query;
-          });
+          if (query.isEmpty) {
+            setState(() {
+              _query = null;
+              context.read<CocktailsNotifier>().getRandoms();
+            });
+          } else {
+            context.read<CocktailsNotifier>().searchCocktailByName(query);
+            setState(() {
+              _query = query;
+            });
+          }
         },
+        actions: [
+          _searchbarAction,
+          // FloatingSearchBarAction.icon(
+          //   icon: Icons.close_rounded,
+          //   onTap: () {
+          //     _controller.clear();
+          //   },
+          //   showIfClosed: _query == null ? false : true,
+          // ),
+        ],
         controller: _controller,
-        title: HeaderText(_query.isEmpty ? 'Home' : _query),
+        title: HeaderText(_query ?? 'Home'),
         body: FloatingSearchBarScrollNotifier(
           child: CardScaffold(
             headerColor: Theme.of(context).primaryColor,
             headerHeight: 0,
             headerChild: const SizedBox.shrink(),
             bodyColor: Colors.white,
-            bodyChild: _query.isEmpty
-                ? Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 32),
-                        child: Text(
-                          'Che ne pensi di questi ?',
-                          style: Theme.of(context).textTheme.headline6,
-                        ),
-                      ),
-                      Flexible(
-                        child: RefreshIndicator(
-                          onRefresh: () async {
-                            context.read<CocktailsNotifier>().getRandoms();
-                          },
-                          child: CocktailListView(
-                            detailPageColor: Theme.of(context).primaryColor,
-                            action: () => context.read<CocktailsNotifier>().getRandoms(),
+            bodyChild: Consumer<CocktailsNotifier>(
+              builder: (context, notifier, child) {
+                if (notifier.isLoading) {
+                  return const Center(
+                    child: CircularProgressIndicator.adaptive(),
+                  );
+                }
+                // TODO add exception handling
+                else {
+                  if (_query == null) {
+                    return Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 32),
+                          child: Text(
+                            'Che ne pensi di questi ?',
+                            style: Theme.of(context).textTheme.headline6,
                           ),
                         ),
-                      ),
-                    ],
-                  )
-                : CocktailListView(
-                    detailPageColor: Theme.of(context).primaryColor,
-                    action: () => context.read<CocktailsNotifier>().getFavoritesFromDatabase(),
-                  ),
+                        Flexible(
+                          child: RefreshIndicator(
+                            onRefresh: notifier.getRandoms,
+                            child: CocktailListView(
+                              detailPageColor: Theme.of(context).primaryColor,
+                              cocktails: notifier.cocktails,
+                            ),
+                          ),
+                        ),
+                      ],
+                    );
+                  } else {
+                    return CocktailListView(
+                      detailPageColor: Theme.of(context).primaryColor,
+                      cocktails: notifier.cocktails,
+                    );
+                  }
+                }
+              },
+            ),
           ),
         ),
       ),
     );
   }
 }
+
+final _searchbarAction = FloatingSearchBarAction(
+  showIfOpened: true,
+  builder: (context, animation) {
+    final bar = FloatingSearchAppBar.of(context)!;
+
+    return ValueListenableBuilder<String>(
+      valueListenable: bar.queryNotifer,
+      builder: (context, query, _) {
+        final isEmpty = query.isEmpty;
+
+        return SearchToClear(
+          isEmpty: isEmpty,
+          size: 28,
+          color: bar.style.iconColor,
+          duration: kThemeChangeDuration * 0.5,
+          onTap: () {
+            if (!isEmpty) {
+              bar.close();
+            } else {
+              bar.isOpen = !bar.isOpen || (!bar.hasFocus && bar.isAlwaysOpened);
+            }
+          },
+        );
+      },
+    );
+  },
+);

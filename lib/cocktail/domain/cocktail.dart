@@ -1,3 +1,5 @@
+import 'package:flutter/foundation.dart' as f;
+
 import 'alcoholic.dart';
 import 'category.dart';
 

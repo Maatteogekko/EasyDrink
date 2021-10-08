@@ -1,4 +1,5 @@
 import 'package:easy_drink/cocktail/application/cocktails_notifier.dart';
+import 'package:easy_drink/cocktail/application/favorite_cocktails_notifier.dart';
 import 'package:easy_drink/cocktail/infrastructure/cocktail_repository.dart';
 import 'package:easy_drink/core/infrastructure/sembast_database.dart';
 import 'package:flutter/cupertino.dart';
@@ -16,15 +17,19 @@ class AppWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        Provider(create: (_) => CocktailRepository()),
         Provider(create: (_) => SembastDatabase()..init()),
-        ChangeNotifierProxyProvider2<CocktailRepository, SembastDatabase, CocktailsNotifier>(
+        Provider(create: (_) => CocktailRepository()),
+        ChangeNotifierProxyProvider<CocktailRepository, CocktailsNotifier>(
           create: (_) => CocktailsNotifier(
             CocktailRepository(),
+          ),
+          update: (_, cocktailRepository, __) => CocktailsNotifier(cocktailRepository),
+        ),
+        ChangeNotifierProxyProvider<SembastDatabase, FavoriteCocktailsNotifier>(
+          create: (_) => FavoriteCocktailsNotifier(
             SembastDatabase(),
           ),
-          update: (_, cocktailRepository, sembastDatabase, __) =>
-              CocktailsNotifier(cocktailRepository, sembastDatabase),
+          update: (_, sembastDatabase, __) => FavoriteCocktailsNotifier(sembastDatabase),
         ),
       ],
       child: MaterialApp.router(
