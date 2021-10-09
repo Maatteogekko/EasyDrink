@@ -91,6 +91,23 @@ class CocktailRepository {
     return cocktailList;
   }
 
+  Future<List<String>> getIngredients() async {
+    final uri = Uri.parse(baseEndpoint + "/list.php?i=list");
+    final response = await http.get(uri);
+    final ingredientList = <String>[];
+    if (response.statusCode == 200) {
+      final json = jsonDecode(response.body) as Map<String, dynamic>;
+      for (var value in (json['drinks'] as List<dynamic>)) {
+        final ingredientMap = value as Map<String, dynamic>;
+        ingredientList.add(ingredientMap.values.single as String);
+      }
+    } else {
+      // TODO handle failure
+    }
+
+    return ingredientList;
+  }
+
   Future<Cocktail?> _getCocktailFromId(String id) async {
     final uri = Uri.parse(baseEndpoint + "/lookup.php?i=$id");
     final response = await http.get(uri);

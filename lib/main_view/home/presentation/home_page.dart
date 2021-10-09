@@ -5,6 +5,7 @@ import 'package:easy_drink/cocktail/presentation/cocktail_list_view.dart';
 import 'package:easy_drink/main_view/home/presentation/search_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:material_floating_search_bar/material_floating_search_bar.dart';
+import 'package:multi_select_flutter/multi_select_flutter.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
@@ -34,6 +35,37 @@ class _HomePageState extends State<HomePage> {
     super.dispose();
   }
 
+// TODO
+  void _showMultiSelect(BuildContext context) async {
+    await showModalBottomSheet(
+      isScrollControlled: true,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(24),
+          topRight: Radius.circular(24),
+        ),
+      ),
+      context: context,
+      builder: (ctx) {
+        return MultiSelectBottomSheet(
+          title: const Text("Seleziona ingredienti"),
+          cancelText: const Text("Annulla"),
+          searchable: true,
+          items: ctx
+              .read<CocktailsNotifier>()
+              .ingredients
+              .map(
+                (e) => MultiSelectItem(e, e),
+              )
+              .toList(),
+          initialValue: ctx.read<CocktailsNotifier>().selectedIngredients,
+          onSelectionChanged: context.read<CocktailsNotifier>().updateIngredientsFilter,
+          maxChildSize: 0.8,
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,7 +79,7 @@ class _HomePageState extends State<HomePage> {
               context.read<CocktailsNotifier>().getRandoms();
             });
           } else {
-            context.read<CocktailsNotifier>().searchCocktailByName(query);
+            context.read<CocktailsNotifier>().search(query);
             setState(() {
               _query = query;
             });
@@ -96,9 +128,28 @@ class _HomePageState extends State<HomePage> {
                       ],
                     );
                   } else {
-                    return CocktailListView(
-                      detailPageColor: Theme.of(context).primaryColor,
-                      cocktails: notifier.cocktails,
+                    return Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 32),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              ElevatedButton(
+                                onPressed: () => _showMultiSelect(context),
+                                child: const Text('Ingredienti'),
+                              )
+                            ],
+                          ),
+                        ),
+                        Flexible(
+                          child: CocktailListView(
+                            detailPageColor: Theme.of(context).primaryColor,
+                            cocktails: notifier.cocktails,
+                          ),
+                        ),
+                      ],
                     );
                   }
                 }
