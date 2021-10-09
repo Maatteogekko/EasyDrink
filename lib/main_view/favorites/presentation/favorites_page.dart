@@ -5,21 +5,8 @@ import 'package:easy_drink/main_view/core/presentation/widgets/card_scaffold.dar
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class FavoritesPage extends StatefulWidget {
+class FavoritesPage extends StatelessWidget {
   const FavoritesPage({Key? key}) : super(key: key);
-
-  @override
-  State<FavoritesPage> createState() => _FavoritesPageState();
-}
-
-class _FavoritesPageState extends State<FavoritesPage> {
-  @override
-  void initState() {
-    super.initState();
-    Future.microtask(
-      () => context.read<FavoriteCocktailsNotifier>().getFavoritesFromDatabase(),
-    );
-  }
 
   @override
   Widget build(BuildContext context) {

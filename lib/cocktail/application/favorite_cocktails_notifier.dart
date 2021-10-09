@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:easy_drink/cocktail/domain/cocktail.dart';
 import 'package:easy_drink/cocktail/infrastructure/cocktail_dto.dart';
 import 'package:easy_drink/core/infrastructure/sembast_database.dart';
@@ -9,7 +11,9 @@ class FavoriteCocktailsNotifier extends ChangeNotifier {
   final SembastDatabase _database;
   final _store = stringMapStoreFactory.store('favoriteCocktails');
 
-  FavoriteCocktailsNotifier(this._database);
+  FavoriteCocktailsNotifier(this._database) {
+    unawaited(_getFavoritesFromDatabase());
+  }
 
   final List<Cocktail> _cocktails = [];
   UnmodifiableListView<Cocktail> get cocktails => UnmodifiableListView(_cocktails);
@@ -71,7 +75,7 @@ class FavoriteCocktailsNotifier extends ChangeNotifier {
     );
   }
 
-  Future<void> getFavoritesFromDatabase() async {
+  Future<void> _getFavoritesFromDatabase() async {
     _isLoading = true;
     notifyListeners();
 
