@@ -7,6 +7,11 @@ class Filter {
   List<Category> categories = [];
   List<Alcoholic> alcoholicList = [];
 
+  Filter() {
+    categories = Category.values;
+    alcoholicList = Alcoholic.values;
+  }
+
   bool get hasNoIngredients => ingredients.isEmpty;
   bool get hasNoCategories => categories.isEmpty;
   bool get hasNoAlcoholic => alcoholicList.isEmpty;

@@ -1,4 +1,6 @@
 import 'package:easy_drink/cocktail/application/cocktails_notifier.dart';
+import 'package:easy_drink/cocktail/domain/alcoholic.dart';
+import 'package:easy_drink/cocktail/domain/category.dart';
 import 'package:easy_drink/core/presentation/widgets/header_text.dart';
 import 'package:easy_drink/main_view/core/presentation/widgets/card_scaffold.dart';
 import 'package:easy_drink/cocktail/presentation/cocktail_list_view.dart';
@@ -15,7 +17,6 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-// TODO implement filter
 class _HomePageState extends State<HomePage> {
   late FloatingSearchBarController _controller;
   String? _query;
@@ -33,37 +34,6 @@ class _HomePageState extends State<HomePage> {
   void dispose() {
     _controller.dispose();
     super.dispose();
-  }
-
-// TODO
-  void _showMultiSelect(BuildContext context) async {
-    await showModalBottomSheet(
-      isScrollControlled: true,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(24),
-          topRight: Radius.circular(24),
-        ),
-      ),
-      context: context,
-      builder: (ctx) {
-        return MultiSelectBottomSheet(
-          title: const Text("Seleziona ingredienti"),
-          cancelText: const Text("Annulla"),
-          searchable: true,
-          items: ctx
-              .read<CocktailsNotifier>()
-              .ingredients
-              .map(
-                (e) => MultiSelectItem(e, e),
-              )
-              .toList(),
-          initialValue: ctx.read<CocktailsNotifier>().selectedIngredients,
-          onSelectionChanged: context.read<CocktailsNotifier>().updateIngredientsFilter,
-          maxChildSize: 0.8,
-        );
-      },
-    );
   }
 
   @override
@@ -109,8 +79,7 @@ class _HomePageState extends State<HomePage> {
                     return Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 32),
+                        _ListViewHeader(
                           child: Text(
                             'Che ne pensi di questi ?',
                             style: Theme.of(context).textTheme.headline6,
@@ -131,15 +100,58 @@ class _HomePageState extends State<HomePage> {
                     return Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 32),
+                        _ListViewHeader(
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
-                              ElevatedButton(
-                                onPressed: () => _showMultiSelect(context),
-                                child: const Text('Ingredienti'),
-                              )
+                              _FilterSelector(
+                                color: Theme.of(context).primaryColor,
+                                buttonText: "Ingredienti",
+                                title: "Seleziona ingredienti",
+                                searchable: true,
+                                initialChildSize: 0.5,
+                                items: context
+                                    .read<CocktailsNotifier>()
+                                    .ingredients
+                                    .map(
+                                      (e) => MultiSelectItem(e, e),
+                                    )
+                                    .toList(),
+                                initialValue: context.read<CocktailsNotifier>().selectedIngredients,
+                                onConfirm:
+                                    context.read<CocktailsNotifier>().updateIngredientsFilter,
+                                maxChildSize: 0.8,
+                              ),
+                              _FilterSelector(
+                                color: Colors.amber,
+                                buttonText: "Categorie",
+                                title: "Seleziona categorie",
+                                searchable: false,
+                                initialChildSize: 0.5,
+                                items: Category.values
+                                    .map(
+                                      (e) => MultiSelectItem(e, e.value),
+                                    )
+                                    .toList(),
+                                initialValue: context.read<CocktailsNotifier>().selectedCategories,
+                                onConfirm: context.read<CocktailsNotifier>().updateCategoriesFilter,
+                                maxChildSize: 0.8,
+                              ),
+                              _FilterSelector(
+                                color: Colors.purple,
+                                buttonText: "Tipi",
+                                title: "Seleziona tipi",
+                                searchable: false,
+                                initialChildSize: 0.4,
+                                items: Alcoholic.values
+                                    .map(
+                                      (e) => MultiSelectItem(e, e.value),
+                                    )
+                                    .toList(),
+                                initialValue: context.read<CocktailsNotifier>().selectedAlcoholics,
+                                onConfirm: context.read<CocktailsNotifier>().updateAlcoholicFilter,
+                                maxChildSize: 0.4,
+                              ),
                             ],
                           ),
                         ),
@@ -158,6 +170,101 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
+    );
+  }
+}
+
+class _ListViewHeader extends StatelessWidget {
+  const _ListViewHeader({
+    Key? key,
+    required this.child,
+  }) : super(key: key);
+
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: const BoxDecoration(
+        color: Color(0xFFFAFAFA),
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(24),
+          topRight: Radius.circular(24),
+        ),
+      ),
+      padding: const EdgeInsets.symmetric(vertical: 18),
+      alignment: Alignment.center,
+      child: child,
+    );
+  }
+}
+
+class _FilterSelector<V> extends StatelessWidget {
+  const _FilterSelector({
+    Key? key,
+    this.color,
+    required this.title,
+    required this.buttonText,
+    required this.searchable,
+    required this.initialChildSize,
+    required this.maxChildSize,
+    required this.items,
+    required this.onConfirm,
+    required this.initialValue,
+  }) : super(key: key);
+
+  final Color? color;
+  final String buttonText;
+  final String title;
+  final bool searchable;
+  final double initialChildSize;
+  final double maxChildSize;
+  final List<MultiSelectItem<V>> items;
+  final void Function(List<V>) onConfirm;
+  final List<V> initialValue;
+
+  void _showMultiSelect(BuildContext context, Widget Function(BuildContext) builder) async {
+    await showModalBottomSheet(
+      isScrollControlled: true,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(24),
+          topRight: Radius.circular(24),
+        ),
+      ),
+      context: context,
+      builder: builder,
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      style: ButtonStyle(
+        elevation: MaterialStateProperty.all(0),
+        backgroundColor: MaterialStateProperty.all(color),
+      ),
+      onPressed: () => _showMultiSelect(
+        context,
+        (ctx) {
+          return MultiSelectBottomSheet(
+            checkColor: color,
+            selectedColor: color?.withOpacity(0.5),
+            title: Text(title),
+            cancelText: Text(
+              "Annulla",
+              style: Theme.of(context).textTheme.button?.copyWith(color: Colors.redAccent),
+            ),
+            searchable: searchable,
+            initialChildSize: initialChildSize,
+            items: items,
+            initialValue: initialValue,
+            onConfirm: onConfirm,
+            maxChildSize: maxChildSize,
+          );
+        },
+      ),
+      child: Text(buttonText),
     );
   }
 }

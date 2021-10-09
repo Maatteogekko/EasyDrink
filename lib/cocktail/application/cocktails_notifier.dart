@@ -38,6 +38,18 @@ class CocktailsNotifier extends ChangeNotifier {
     notifyListeners();
   }
 
+  void updateCategoriesFilter(List<Category> selectedCategories) {
+    _filter.categories = selectedCategories;
+    _applyFilter();
+    notifyListeners();
+  }
+
+  void updateAlcoholicFilter(List<Alcoholic> selectedAlcoholics) {
+    _filter.alcoholicList = selectedAlcoholics;
+    _applyFilter();
+    notifyListeners();
+  }
+
   void _applyFilter() {
     _cocktails.addAll(_nonCompliantCocktails);
 
@@ -57,32 +69,35 @@ class CocktailsNotifier extends ChangeNotifier {
       },
     );
 
-    // FIXME these two vvvvv need to become like the one above ^^^^^^^
-    // for (var category in _filter.categories) {
-    //   // ? retainWhere instead
-    //   _cocktails.removeWhere(
-    //     (cocktail) {
-    //       if (cocktail.category != category) {
-    //         _nonCompliantCocktails.add(cocktail);
-    //         return true;
-    //       }
-    //       return false;
-    //     },
-    //   );
-    // }
+    _cocktails.retainWhere(
+      (cocktail) {
+        bool keep = false;
 
-    // for (var alcoholic in _filter.alcoholicList) {
-    //   // ? retainWhere instead
-    //   _cocktails.removeWhere(
-    //     (cocktail) {
-    //       if (cocktail.alcoholic != alcoholic) {
-    //         _nonCompliantCocktails.add(cocktail);
-    //         return true;
-    //       }
-    //       return false;
-    //     },
-    //   );
-    // }
+        if (_filter.categories.contains(cocktail.category)) {
+          keep = true;
+        }
+
+        if (!keep) {
+          _nonCompliantCocktails.add(cocktail);
+        }
+        return keep;
+      },
+    );
+
+    _cocktails.retainWhere(
+      (cocktail) {
+        bool keep = false;
+
+        if (_filter.alcoholicList.contains(cocktail.alcoholic)) {
+          keep = true;
+        }
+
+        if (!keep) {
+          _nonCompliantCocktails.add(cocktail);
+        }
+        return keep;
+      },
+    );
   }
 
   Future<void> search(String query) async {
@@ -102,7 +117,7 @@ class CocktailsNotifier extends ChangeNotifier {
     _ingredients = await _repository.getIngredients();
     _ingredients.sort();
 
-    // defaults to having fall the ingredients enabled
+    // default is to have all the ingredients enabled
     _filter.ingredients = _ingredients;
   }
 
