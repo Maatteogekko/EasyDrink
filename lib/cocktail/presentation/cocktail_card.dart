@@ -51,7 +51,7 @@ class CocktailCard extends StatelessWidget {
                 icon: const Icon(Icons.category_rounded),
               ),
               CocktailTile(
-                text: cocktail.alchoholic.value,
+                text: cocktail.alcoholic.value,
                 icon: const Icon(Icons.wine_bar),
               ),
             ],

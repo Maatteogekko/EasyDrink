@@ -36,7 +36,6 @@ class FavoriteCocktailsNotifier extends ChangeNotifier {
       return;
     }
 
-    // FIXME potentially causes bugs
     _cocktails.add(cocktail);
     await _saveFavoriteToDatabase(cocktail);
 
@@ -72,7 +71,6 @@ class FavoriteCocktailsNotifier extends ChangeNotifier {
     );
   }
 
-  // TODO find proper place to initialize
   Future<void> getFavoritesFromDatabase() async {
     _isLoading = true;
     notifyListeners();
@@ -84,13 +82,12 @@ class FavoriteCocktailsNotifier extends ChangeNotifier {
 
     final records = await _store.find(_database.instance);
 
-    _cocktails.addAll(
-      records
-          .map(
-            (e) => CocktailDTO.fromJson(e.value).toDomain(),
-          )
-          .toList(),
-    );
+    for (var record in records) {
+      final cocktail = CocktailDTO.fromJson(record.value).toDomain();
+      if (!_cocktails.contains(cocktail)) {
+        _cocktails.add(cocktail);
+      }
+    }
 
     _isLoading = false;
     notifyListeners();

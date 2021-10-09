@@ -1,5 +1,3 @@
-import 'package:flutter/foundation.dart' as f;
-
 import 'alcoholic.dart';
 import 'category.dart';
 
@@ -7,7 +5,7 @@ class Cocktail {
   final String id;
   final String name;
   final Category category;
-  final Alcoholic alchoholic;
+  final Alcoholic alcoholic;
   final String instructions;
   final List<String> ingredients;
   final List<String> measures;
@@ -17,7 +15,7 @@ class Cocktail {
     required this.id,
     required this.name,
     required this.category,
-    required this.alchoholic,
+    required this.alcoholic,
     required this.instructions,
     required this.ingredients,
     required this.measures,
@@ -25,4 +23,16 @@ class Cocktail {
   });
 
   String get thumbnailUri => imageUri + "/preview";
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+
+    return other is Cocktail && other.id == id;
+  }
+
+  @override
+  int get hashCode {
+    return id.hashCode;
+  }
 }
