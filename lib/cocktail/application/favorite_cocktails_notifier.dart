@@ -2,16 +2,18 @@ import 'dart:async';
 
 import 'package:easy_drink/cocktail/domain/cocktail.dart';
 import 'package:easy_drink/cocktail/infrastructure/cocktail_dto.dart';
+import 'package:easy_drink/cocktail/infrastructure/cocktail_repository.dart';
 import 'package:easy_drink/core/infrastructure/sembast_database.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:sembast/sembast.dart';
 
 class FavoriteCocktailsNotifier extends ChangeNotifier {
+  final CocktailRepository _repository;
   final SembastDatabase _database;
   final _store = stringMapStoreFactory.store('favoriteCocktails');
 
-  FavoriteCocktailsNotifier(this._database) {
+  FavoriteCocktailsNotifier(this._database, this._repository) {
     unawaited(_getFavoritesFromDatabase());
   }
 
@@ -95,5 +97,9 @@ class FavoriteCocktailsNotifier extends ChangeNotifier {
 
     _isLoading = false;
     notifyListeners();
+  }
+
+  Future<Cocktail?> getCocktail(String id) async {
+    return await _repository.getCocktailFromId(id);
   }
 }

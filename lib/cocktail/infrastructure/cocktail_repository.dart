@@ -53,4 +53,15 @@ class CocktailRepository {
 
     return ingredientList;
   }
+
+  Future<Cocktail?> getCocktailFromId(String id) async {
+    final uri = Uri.parse(baseEndpoint + "/lookup.php?i=$id");
+    final response = await http.get(uri);
+    if (response.statusCode == 200) {
+      final json = jsonDecode(response.body) as Map<String, dynamic>;
+      return ResponseDTO.fromJson(json).toDomain()?.single;
+    } else {
+      return null;
+    }
+  }
 }

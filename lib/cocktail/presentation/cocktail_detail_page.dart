@@ -3,6 +3,7 @@ import 'package:easy_drink/cocktail/application/favorite_cocktails_notifier.dart
 import 'package:easy_drink/cocktail/domain/cocktail.dart';
 import 'package:easy_drink/core/presentation/widgets/header_text.dart';
 import 'package:easy_drink/main_view/core/presentation/widgets/card_scaffold.dart';
+import 'package:easy_drink/qr_code/presentation/show_qr_code_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
@@ -189,7 +190,7 @@ class _Header extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(top: 6),
+      margin: const EdgeInsets.only(top: 6, right: 12),
       child: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -202,6 +203,15 @@ class _Header extends StatelessWidget {
         centerTitle: true,
         automaticallyImplyLeading: false,
         leading: const AutoBackButton(),
+        actions: [
+          IconButton(
+            onPressed: () => showQrCodeDialog(
+              context: context,
+              cocktailId: cocktail.id,
+            ),
+            icon: const Icon(Icons.share),
+          ),
+        ],
       ),
     );
   }

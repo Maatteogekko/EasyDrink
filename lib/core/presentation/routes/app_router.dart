@@ -4,6 +4,7 @@ import 'package:easy_drink/main_view/core/presentation/main_view_page.dart';
 import 'package:easy_drink/main_view/favorites/presentation/favorites_page.dart';
 import 'package:easy_drink/main_view/home/presentation/home_page.dart';
 import 'package:easy_drink/main_view/settings/presentation/settings_page.dart';
+import 'package:easy_drink/qr_code/presentation/scan_qr_code_page.dart';
 
 @AdaptiveAutoRouter(
   routes: [
@@ -49,6 +50,10 @@ import 'package:easy_drink/main_view/settings/presentation/settings_page.dart';
     AdaptiveRoute(
       page: CocktailDetailPage,
       path: '/detail',
+    ),
+    AdaptiveRoute(
+      page: ScanQrCodePage,
+      path: '/scan',
     ),
   ],
   replaceInRouteName: 'Page,Route',

@@ -40,6 +40,8 @@ dependencies:
   multi_select_flutter: ^4.0.0
   state_notifier: ^0.7.1
   flutter_state_notifier: ^0.7.1
+  qr_flutter: ^4.0.0
+  qr_code_scanner: ^0.5.2
 
 dev_dependencies:
   flutter_test:

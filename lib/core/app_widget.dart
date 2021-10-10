@@ -25,8 +25,10 @@ class AppWidget extends StatelessWidget {
         ChangeNotifierProxyProvider<SembastDatabase, FavoriteCocktailsNotifier>(
           create: (_) => FavoriteCocktailsNotifier(
             SembastDatabase(),
+            CocktailRepository(),
           ),
-          update: (_, sembastDatabase, __) => FavoriteCocktailsNotifier(sembastDatabase),
+          update: (_, sembastDatabase, __) =>
+              FavoriteCocktailsNotifier(sembastDatabase, CocktailRepository()),
         ),
       ],
       child: MaterialApp.router(
