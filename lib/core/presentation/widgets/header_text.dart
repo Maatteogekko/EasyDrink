@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class HeaderText extends StatelessWidget {
   const HeaderText(
@@ -11,7 +10,6 @@ class HeaderText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO implement
     return Padding(
       padding: const EdgeInsets.symmetric(
         horizontal: 16,

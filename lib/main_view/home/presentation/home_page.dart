@@ -66,105 +66,129 @@ class _HomePageState extends State<HomePage> {
             headerHeight: 0,
             headerChild: const SizedBox.shrink(),
             bodyColor: Colors.white,
-            bodyChild: Consumer<CocktailsNotifier>(
-              builder: (context, notifier, child) {
-                if (notifier.isLoading) {
-                  return const Center(
+            bodyChild: Consumer2<CocktailsNotifier, CocktailsState>(
+              builder: (context, notifier, state, child) {
+                return state.map(
+                  initial: (_) => const SizedBox.shrink(),
+                  loading: (_) => const Center(
                     child: CircularProgressIndicator.adaptive(),
-                  );
-                }
-                // TODO add exception handling
-                else {
-                  if (_query == null) {
-                    return Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        _ListViewHeader(
-                          child: Text(
-                            'Che ne pensi di questi ?',
-                            style: Theme.of(context).textTheme.headline6,
-                          ),
-                        ),
-                        Flexible(
-                          child: RefreshIndicator(
-                            onRefresh: notifier.getRandoms,
-                            child: CocktailListView(
-                              detailPageColor: Theme.of(context).primaryColor,
-                              cocktails: notifier.cocktails,
+                  ),
+                  data: (data) {
+                    if (_query == null) {
+                      return Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          _ListViewHeader(
+                            child: Text(
+                              'Che ne pensi di questi ?',
+                              style: Theme.of(context).textTheme.headline6,
                             ),
                           ),
-                        ),
-                      ],
-                    );
-                  } else {
-                    return Column(
-                      mainAxisSize: MainAxisSize.min,
+                          Flexible(
+                            child: RefreshIndicator(
+                              onRefresh: notifier.getRandoms,
+                              child: CocktailListView(
+                                detailPageColor: Theme.of(context).primaryColor,
+                                cocktails: data.cocktails.toList()
+                                  ..sort(
+                                    (a, b) => a.name.compareTo(b.name),
+                                  ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      );
+                    } else {
+                      return Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          _ListViewHeader(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                _FilterSelector(
+                                  color: Theme.of(context).primaryColor,
+                                  buttonText: "Ingredienti",
+                                  title: "Seleziona ingredienti",
+                                  searchable: true,
+                                  initialChildSize: 0.5,
+                                  items: context
+                                      .read<CocktailsNotifier>()
+                                      .ingredients
+                                      .map(
+                                        (e) => MultiSelectItem(e, e),
+                                      )
+                                      .toList(),
+                                  initialValue: notifier.selectedIngredients,
+                                  onConfirm: notifier.updateIngredientsFilter,
+                                  maxChildSize: 0.8,
+                                ),
+                                _FilterSelector(
+                                  color: Colors.amber,
+                                  buttonText: "Categorie",
+                                  title: "Seleziona categorie",
+                                  searchable: false,
+                                  initialChildSize: 0.5,
+                                  items: Category.values
+                                      .map(
+                                        (e) => MultiSelectItem(e, e.value),
+                                      )
+                                      .toList(),
+                                  initialValue: notifier.selectedCategories,
+                                  onConfirm: notifier.updateCategoriesFilter,
+                                  maxChildSize: 0.8,
+                                ),
+                                _FilterSelector(
+                                  color: Colors.purple,
+                                  buttonText: "Tipi",
+                                  title: "Seleziona tipi",
+                                  searchable: false,
+                                  initialChildSize: 0.4,
+                                  items: Alcoholic.values
+                                      .map(
+                                        (e) => MultiSelectItem(e, e.value),
+                                      )
+                                      .toList(),
+                                  initialValue: notifier.selectedAlcoholics,
+                                  onConfirm: notifier.updateAlcoholicFilter,
+                                  maxChildSize: 0.4,
+                                ),
+                              ],
+                            ),
+                          ),
+                          Flexible(
+                            child: RefreshIndicator(
+                              onRefresh: () => notifier.search(_query ?? ''),
+                              child: CocktailListView(
+                                detailPageColor: Theme.of(context).primaryColor,
+                                cocktails: state.cocktails.toList()
+                                  ..sort(
+                                    (a, b) => a.name.compareTo(b.name),
+                                  ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      );
+                    }
+                  },
+                  failure: (failure) => Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        _ListViewHeader(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              _FilterSelector(
-                                color: Theme.of(context).primaryColor,
-                                buttonText: "Ingredienti",
-                                title: "Seleziona ingredienti",
-                                searchable: true,
-                                initialChildSize: 0.5,
-                                items: context
-                                    .read<CocktailsNotifier>()
-                                    .ingredients
-                                    .map(
-                                      (e) => MultiSelectItem(e, e),
-                                    )
-                                    .toList(),
-                                initialValue: context.read<CocktailsNotifier>().selectedIngredients,
-                                onConfirm:
-                                    context.read<CocktailsNotifier>().updateIngredientsFilter,
-                                maxChildSize: 0.8,
-                              ),
-                              _FilterSelector(
-                                color: Colors.amber,
-                                buttonText: "Categorie",
-                                title: "Seleziona categorie",
-                                searchable: false,
-                                initialChildSize: 0.5,
-                                items: Category.values
-                                    .map(
-                                      (e) => MultiSelectItem(e, e.value),
-                                    )
-                                    .toList(),
-                                initialValue: context.read<CocktailsNotifier>().selectedCategories,
-                                onConfirm: context.read<CocktailsNotifier>().updateCategoriesFilter,
-                                maxChildSize: 0.8,
-                              ),
-                              _FilterSelector(
-                                color: Colors.purple,
-                                buttonText: "Tipi",
-                                title: "Seleziona tipi",
-                                searchable: false,
-                                initialChildSize: 0.4,
-                                items: Alcoholic.values
-                                    .map(
-                                      (e) => MultiSelectItem(e, e.value),
-                                    )
-                                    .toList(),
-                                initialValue: context.read<CocktailsNotifier>().selectedAlcoholics,
-                                onConfirm: context.read<CocktailsNotifier>().updateAlcoholicFilter,
-                                maxChildSize: 0.4,
-                              ),
-                            ],
-                          ),
+                        Text(
+                          failure.message,
+                          textAlign: TextAlign.center,
                         ),
-                        Flexible(
-                          child: CocktailListView(
-                            detailPageColor: Theme.of(context).primaryColor,
-                            cocktails: notifier.cocktails,
-                          ),
+                        const SizedBox(height: 10),
+                        ElevatedButton(
+                          onPressed: failure.failedAction,
+                          child: const Text("Riprova"),
                         ),
                       ],
-                    );
-                  }
-                }
+                    ),
+                  ),
+                );
               },
             ),
           ),

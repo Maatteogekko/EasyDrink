@@ -4,6 +4,7 @@ import 'package:easy_drink/cocktail/infrastructure/cocktail_repository.dart';
 import 'package:easy_drink/core/infrastructure/sembast_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_state_notifier/flutter_state_notifier.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'presentation/routes/app_router.gr.dart';
@@ -18,12 +19,8 @@ class AppWidget extends StatelessWidget {
     return MultiProvider(
       providers: [
         Provider(create: (_) => SembastDatabase()..init()),
-        Provider(create: (_) => CocktailRepository()),
-        ChangeNotifierProxyProvider<CocktailRepository, CocktailsNotifier>(
-          create: (_) => CocktailsNotifier(
-            CocktailRepository(),
-          ),
-          update: (_, cocktailRepository, __) => CocktailsNotifier(cocktailRepository),
+        StateNotifierProvider<CocktailsNotifier, CocktailsState>(
+          create: (_) => CocktailsNotifier(CocktailRepository()),
         ),
         ChangeNotifierProxyProvider<SembastDatabase, FavoriteCocktailsNotifier>(
           create: (_) => FavoriteCocktailsNotifier(

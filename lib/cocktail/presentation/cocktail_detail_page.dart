@@ -29,11 +29,7 @@ class CocktailDetailPage extends StatelessWidget {
           bodyColor: Colors.white,
           bodyChild: Stack(
             children: [
-              // IMPROVE add loading spinner
-              FadeInImage.memoryNetwork(
-                placeholder: kTransparentImage,
-                image: cocktail.imageUri,
-              ),
+              _Image(cocktail: cocktail),
               Positioned(
                 top: 280,
                 right: 20,
@@ -53,6 +49,47 @@ class CocktailDetailPage extends StatelessWidget {
               )
             ],
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class _Image extends StatefulWidget {
+  const _Image({
+    Key? key,
+    required this.cocktail,
+  }) : super(key: key);
+
+  final Cocktail cocktail;
+
+  @override
+  State<_Image> createState() => _ImageState();
+}
+
+class _ImageState extends State<_Image> {
+  late String _imageUri;
+
+  @override
+  void initState() {
+    super.initState();
+    _imageUri = widget.cocktail.imageUri;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return FadeInImage.memoryNetwork(
+      placeholder: kTransparentImage,
+      image: _imageUri,
+      imageErrorBuilder: (context, _, __) => GestureDetector(
+        onTap: () {
+          // FIXME this is not working
+          setState(() {});
+        },
+        child: Container(
+          alignment: Alignment.topCenter,
+          padding: const EdgeInsets.symmetric(vertical: 60),
+          child: Image.asset("assets/images/cocktail_placeholder.jpg"),
         ),
       ),
     );
@@ -164,17 +201,7 @@ class _Header extends StatelessWidget {
         ),
         centerTitle: true,
         automaticallyImplyLeading: false,
-        // TODO test if behaves correctly
         leading: const AutoBackButton(),
-        // IconButton(
-        //   splashRadius: 30,
-        //   onPressed: () {
-        //     AutoRouter.of(context).pop();
-        //   },
-        //   icon: const Icon(
-        //     Icons.arrow_back,
-        //   ),
-        // ),
       ),
     );
   }

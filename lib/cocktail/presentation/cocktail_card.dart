@@ -2,7 +2,6 @@ import 'package:easy_drink/cocktail/domain/alcoholic.dart';
 import 'package:easy_drink/cocktail/domain/category.dart';
 import 'package:easy_drink/cocktail/domain/cocktail.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:transparent_image/transparent_image.dart';
 
 class CocktailCard extends StatelessWidget {
@@ -34,6 +33,8 @@ class CocktailCard extends StatelessWidget {
               FadeInImage.memoryNetwork(
                 placeholder: kTransparentImage,
                 image: cocktail.thumbnailUri,
+                imageErrorBuilder: (context, _, __) =>
+                    Image.asset("assets/images/cocktail_placeholder.jpg"),
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 6),

@@ -11,7 +11,7 @@
         "**/Thumbs.db": true,
         "**/*.freezed.dart": true,
         "**/*.g.dart": true,
-        "**/.gitkeep": false
+        "**/.gitkeep": true
     },
     "explorerExclude.backup": null
 }
