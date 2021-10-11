@@ -1,6 +1,9 @@
+import 'dart:ui';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_drink/cocktail/application/favorite_cocktails_notifier.dart';
 import 'package:easy_drink/cocktail/domain/cocktail.dart';
+import 'package:easy_drink/core/presentation/widgets/centered_layout.dart';
 import 'package:easy_drink/core/presentation/widgets/header_text.dart';
 import 'package:easy_drink/main_view/core/presentation/widgets/card_scaffold.dart';
 import 'package:easy_drink/qr_code/presentation/show_qr_code_dialog.dart';
@@ -21,6 +24,8 @@ class CocktailDetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final height = MediaQuery.of(context).size.height;
+    final imageHeight = height > 900 ? height * 0.5 : height * 0.45;
     return SafeArea(
       child: Scaffold(
         body: CardScaffold(
@@ -29,10 +34,22 @@ class CocktailDetailPage extends StatelessWidget {
           headerChild: _Header(color: color, cocktail: cocktail),
           bodyColor: Colors.white,
           bodyChild: Stack(
+            alignment: AlignmentDirectional.topCenter,
             children: [
+              Positioned.fill(
+                child: ClipRect(
+                  child: ImageFiltered(
+                    imageFilter: ImageFilter.blur(
+                      sigmaX: 10.0,
+                      sigmaY: 10.0,
+                    ),
+                    child: _Image(cocktail: cocktail),
+                  ),
+                ),
+              ),
               _Image(cocktail: cocktail),
               Positioned(
-                top: 280,
+                top: imageHeight - 80,
                 right: 20,
                 child: Container(
                   height: 60,
@@ -45,7 +62,7 @@ class CocktailDetailPage extends StatelessWidget {
                 ),
               ),
               Positioned.fill(
-                top: 350,
+                top: imageHeight,
                 child: _Body(cocktail: cocktail),
               )
             ],
@@ -80,6 +97,7 @@ class _ImageState extends State<_Image> {
   @override
   Widget build(BuildContext context) {
     return FadeInImage.memoryNetwork(
+      fit: BoxFit.fill,
       placeholder: kTransparentImage,
       image: _imageUri,
       imageErrorBuilder: (context, _, __) => GestureDetector(
@@ -117,35 +135,39 @@ class _Body extends StatelessWidget {
         ),
       ),
       padding: const EdgeInsets.symmetric(horizontal: 16),
-      child: ListView(
-        padding: const EdgeInsets.only(top: 20),
-        children: [
-          _DetailCard(
-            title: "Istruzioni",
-            child: Text(
-              cocktail.instructions,
-              style: Theme.of(context).textTheme.bodyText2?.copyWith(fontSize: 17),
+      child: CenteredLayout(
+        maxWidth: 500,
+        child: ListView(
+          padding: const EdgeInsets.only(top: 20),
+          children: [
+            _DetailCard(
+              title: "Istruzioni",
+              child: Text(
+                cocktail.instructions,
+                style: Theme.of(context).textTheme.bodyText2?.copyWith(fontSize: 17),
+                textAlign: TextAlign.justify,
+              ),
             ),
-          ),
-          const SizedBox(height: 20),
-          _DetailCard(
-            title: "Ingredienti",
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                _AlignedTextColumn(
-                  list: cocktail.ingredients,
-                  alignment: CrossAxisAlignment.start,
-                ),
-                _AlignedTextColumn(
-                  list: cocktail.measures,
-                  alignment: CrossAxisAlignment.end,
-                ),
-              ],
+            const SizedBox(height: 20),
+            _DetailCard(
+              title: "Ingredienti",
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  _AlignedTextColumn(
+                    list: cocktail.ingredients,
+                    alignment: CrossAxisAlignment.start,
+                  ),
+                  _AlignedTextColumn(
+                    list: cocktail.measures,
+                    alignment: CrossAxisAlignment.end,
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

@@ -18,10 +18,11 @@ class CocktailListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
     return Center(
       child: StaggeredGridView.countBuilder(
         padding: const EdgeInsets.all(8),
-        crossAxisCount: 2,
+        crossAxisCount: width < 600 ? 2 : 3,
         staggeredTileBuilder: (index) => const StaggeredTile.fit(1),
         itemCount: (cocktails.length),
         itemBuilder: (context, index) => (cocktails)
