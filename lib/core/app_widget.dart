@@ -4,6 +4,7 @@ import 'package:easy_drink/cocktail/infrastructure/cocktail_repository.dart';
 import 'package:easy_drink/core/infrastructure/sembast_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_state_notifier/flutter_state_notifier.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -16,6 +17,12 @@ class AppWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // TODO navigate after authentication or immediately, based on the setting
+    _appRouter.pushAndPopUntil(
+      const MainViewRoute(),
+      predicate: (_) => false,
+    );
+
     return MultiProvider(
       providers: [
         Provider(create: (_) => SembastDatabase()..init()),
@@ -34,8 +41,22 @@ class AppWidget extends StatelessWidget {
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,
         title: 'EasyDrink',
+
+        // navigation
         routerDelegate: _appRouter.delegate(),
         routeInformationParser: _appRouter.defaultRouteParser(),
+
+        //localization
+        supportedLocales: const [
+          Locale('it'),
+        ],
+        localizationsDelegates: const [
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+
+        // theming
         scrollBehavior: const CupertinoScrollBehavior(),
         color: const Color(0xFF2360DF),
         theme: ThemeData(

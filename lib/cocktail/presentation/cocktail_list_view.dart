@@ -6,7 +6,7 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 import 'cocktail_card.dart';
 
-class CocktailListView extends StatelessWidget {
+class CocktailListView extends StatefulWidget {
   const CocktailListView({
     required this.detailPageColor,
     required this.cocktails,
@@ -17,6 +17,11 @@ class CocktailListView extends StatelessWidget {
   final List<Cocktail> cocktails;
 
   @override
+  State<CocktailListView> createState() => _CocktailListViewState();
+}
+
+class _CocktailListViewState extends State<CocktailListView> {
+  @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
     return Center(
@@ -24,8 +29,8 @@ class CocktailListView extends StatelessWidget {
         padding: const EdgeInsets.all(8),
         crossAxisCount: width < 600 ? 2 : 3,
         staggeredTileBuilder: (index) => const StaggeredTile.fit(1),
-        itemCount: (cocktails.length),
-        itemBuilder: (context, index) => (cocktails)
+        itemCount: (widget.cocktails.length),
+        itemBuilder: (context, index) => (widget.cocktails)
             .map(
               (e) => CocktailCard(
                 cocktail: e,
@@ -33,7 +38,7 @@ class CocktailListView extends StatelessWidget {
                   AutoRouter.of(context).push(
                     CocktailDetailRoute(
                       cocktail: e,
-                      color: detailPageColor,
+                      color: widget.detailPageColor,
                     ),
                   );
                 },

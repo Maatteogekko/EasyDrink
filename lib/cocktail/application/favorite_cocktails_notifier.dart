@@ -67,6 +67,14 @@ class FavoriteCocktailsNotifier extends ChangeNotifier {
         );
   }
 
+  Future<void> removeAllFavoritesFromDatabase() async {
+    await _store.delete(
+      _database.instance,
+    );
+    _cocktails.clear();
+    notifyListeners();
+  }
+
   Future<void> _removeFavoriteFromDatabase(String id) async {
     await _store.delete(
       _database.instance,

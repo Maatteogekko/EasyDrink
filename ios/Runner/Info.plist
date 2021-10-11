@@ -21,7 +21,7 @@
 		<key>CFBundleVersion</key>
 		<string>$(FLUTTER_BUILD_NUMBER)</string>
 		<key>LSRequiresIPhoneOS</key>
-		<true/>
+		<true />
 		<key>UILaunchStoryboardName</key>
 		<string>LaunchScreen</string>
 		<key>UIMainStoryboardFile</key>
@@ -40,12 +40,19 @@
 			<string>UIInterfaceOrientationLandscapeRight</string>
 		</array>
 		<key>UIViewControllerBasedStatusBarAppearance</key>
-		<false/>
+		<false />
 		<key>io.flutter.embedded_views_preview</key>
-		<true/>
+		<true />
 		<key>NSCameraUsageDescription</key>
 		<string>This app needs camera access to scan QR codes</string>
 		<key>UIStatusBarHidden</key>
-		<false/>
+		<false />
+		<key>NSFaceIDUsageDescription</key>
+		<string>Face ID authorization is required for in-app authentication</string>
+		<key>LSApplicationQueriesSchemes</key>
+		<array>
+			<string>https</string>
+			<string>http</string>
+		</array>
 	</dict>
 </plist>

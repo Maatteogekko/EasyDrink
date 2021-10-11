@@ -5,12 +5,16 @@ import 'package:easy_drink/main_view/favorites/presentation/favorites_page.dart'
 import 'package:easy_drink/main_view/home/presentation/home_page.dart';
 import 'package:easy_drink/main_view/settings/presentation/settings_page.dart';
 import 'package:easy_drink/qr_code/presentation/scan_qr_code_page.dart';
+import 'package:easy_drink/splash/presentation/splash_page.dart';
 
 @AdaptiveAutoRouter(
   routes: [
     AdaptiveRoute(
-      page: MainViewPage,
+      page: SplashPage,
       initial: true,
+    ),
+    AdaptiveRoute(
+      page: MainViewPage,
       children: [
         AdaptiveRoute(
           page: EmptyRouterPage,

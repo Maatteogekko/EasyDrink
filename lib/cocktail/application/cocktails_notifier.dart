@@ -163,7 +163,7 @@ class CocktailsNotifier extends StateNotifier<CocktailsState> with LocatorMixin 
 
     try {
       final newCocktails = <Cocktail>{};
-      for (var i = 0; i < 2; i++) {
+      for (var i = 0; i < 3; i++) {
         newCocktails.addNotNull(await _repository.getRandomCocktail());
       }
       state = CocktailsState.data(cocktails: newCocktails, filter: state.filter);
