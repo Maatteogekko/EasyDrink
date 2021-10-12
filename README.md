@@ -1,3 +1,3 @@
-# easy_drink
+# 🍹 EasyDrink
 
 Facilita la scelta dei cocktail per un aperitivo.
