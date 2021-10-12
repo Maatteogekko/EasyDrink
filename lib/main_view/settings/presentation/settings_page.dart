@@ -80,7 +80,10 @@ class _SettingsList extends StatelessWidget {
               const SettingsTile(title: ''),
               SettingsTile(
                 title: 'Grazie a:',
-                trailing: Image.asset("assets/images/the_cocktail_db_logo.png"),
+                trailing: Image.asset(
+                  "assets/images/the_cocktail_db_logo.png",
+                  width: 200,
+                ),
                 onPressed: (_) => launch("https://www.thecocktaildb.com"),
               ),
             ],
