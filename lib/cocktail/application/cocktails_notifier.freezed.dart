@@ -232,19 +232,15 @@ class _$_Initial with DiagnosticableTreeMixin implements _Initial {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Initial &&
-            (identical(other.cocktails, cocktails) ||
-                const DeepCollectionEquality()
-                    .equals(other.cocktails, cocktails)) &&
-            (identical(other.filter, filter) ||
-                const DeepCollectionEquality().equals(other.filter, filter)));
+        (other.runtimeType == runtimeType &&
+            other is _Initial &&
+            const DeepCollectionEquality().equals(other.cocktails, cocktails) &&
+            (identical(other.filter, filter) || other.filter == filter));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(cocktails) ^
-      const DeepCollectionEquality().hash(filter);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(cocktails), filter);
 
   @JsonKey(ignore: true)
   @override
@@ -337,9 +333,9 @@ abstract class _Initial implements CocktailsState {
       {required Set<Cocktail> cocktails, required Filter filter}) = _$_Initial;
 
   @override
-  Set<Cocktail> get cocktails => throw _privateConstructorUsedError;
+  Set<Cocktail> get cocktails;
   @override
-  Filter get filter => throw _privateConstructorUsedError;
+  Filter get filter;
   @override
   @JsonKey(ignore: true)
   _$InitialCopyWith<_Initial> get copyWith =>
@@ -412,19 +408,15 @@ class _$_Loading with DiagnosticableTreeMixin implements _Loading {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Loading &&
-            (identical(other.cocktails, cocktails) ||
-                const DeepCollectionEquality()
-                    .equals(other.cocktails, cocktails)) &&
-            (identical(other.filter, filter) ||
-                const DeepCollectionEquality().equals(other.filter, filter)));
+        (other.runtimeType == runtimeType &&
+            other is _Loading &&
+            const DeepCollectionEquality().equals(other.cocktails, cocktails) &&
+            (identical(other.filter, filter) || other.filter == filter));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(cocktails) ^
-      const DeepCollectionEquality().hash(filter);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(cocktails), filter);
 
   @JsonKey(ignore: true)
   @override
@@ -517,9 +509,9 @@ abstract class _Loading implements CocktailsState {
       {required Set<Cocktail> cocktails, required Filter filter}) = _$_Loading;
 
   @override
-  Set<Cocktail> get cocktails => throw _privateConstructorUsedError;
+  Set<Cocktail> get cocktails;
   @override
-  Filter get filter => throw _privateConstructorUsedError;
+  Filter get filter;
   @override
   @JsonKey(ignore: true)
   _$LoadingCopyWith<_Loading> get copyWith =>
@@ -591,19 +583,15 @@ class _$_Data with DiagnosticableTreeMixin implements _Data {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Data &&
-            (identical(other.cocktails, cocktails) ||
-                const DeepCollectionEquality()
-                    .equals(other.cocktails, cocktails)) &&
-            (identical(other.filter, filter) ||
-                const DeepCollectionEquality().equals(other.filter, filter)));
+        (other.runtimeType == runtimeType &&
+            other is _Data &&
+            const DeepCollectionEquality().equals(other.cocktails, cocktails) &&
+            (identical(other.filter, filter) || other.filter == filter));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(cocktails) ^
-      const DeepCollectionEquality().hash(filter);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(cocktails), filter);
 
   @JsonKey(ignore: true)
   @override
@@ -696,9 +684,9 @@ abstract class _Data implements CocktailsState {
       {required Set<Cocktail> cocktails, required Filter filter}) = _$_Data;
 
   @override
-  Set<Cocktail> get cocktails => throw _privateConstructorUsedError;
+  Set<Cocktail> get cocktails;
   @override
-  Filter get filter => throw _privateConstructorUsedError;
+  Filter get filter;
   @override
   @JsonKey(ignore: true)
   _$DataCopyWith<_Data> get copyWith => throw _privateConstructorUsedError;
@@ -794,27 +782,22 @@ class _$_Failure with DiagnosticableTreeMixin implements _Failure {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Failure &&
-            (identical(other.cocktails, cocktails) ||
-                const DeepCollectionEquality()
-                    .equals(other.cocktails, cocktails)) &&
-            (identical(other.filter, filter) ||
-                const DeepCollectionEquality().equals(other.filter, filter)) &&
-            (identical(other.message, message) ||
-                const DeepCollectionEquality()
-                    .equals(other.message, message)) &&
+        (other.runtimeType == runtimeType &&
+            other is _Failure &&
+            const DeepCollectionEquality().equals(other.cocktails, cocktails) &&
+            (identical(other.filter, filter) || other.filter == filter) &&
+            (identical(other.message, message) || other.message == message) &&
             (identical(other.failedAction, failedAction) ||
-                const DeepCollectionEquality()
-                    .equals(other.failedAction, failedAction)));
+                other.failedAction == failedAction));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(cocktails) ^
-      const DeepCollectionEquality().hash(filter) ^
-      const DeepCollectionEquality().hash(message) ^
-      const DeepCollectionEquality().hash(failedAction);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(cocktails),
+      filter,
+      message,
+      failedAction);
 
   @JsonKey(ignore: true)
   @override
@@ -910,11 +893,11 @@ abstract class _Failure implements CocktailsState {
       void Function()? failedAction}) = _$_Failure;
 
   @override
-  Set<Cocktail> get cocktails => throw _privateConstructorUsedError;
+  Set<Cocktail> get cocktails;
   @override
-  Filter get filter => throw _privateConstructorUsedError;
-  String get message => throw _privateConstructorUsedError;
-  void Function()? get failedAction => throw _privateConstructorUsedError;
+  Filter get filter;
+  String get message;
+  void Function()? get failedAction;
   @override
   @JsonKey(ignore: true)
   _$FailureCopyWith<_Failure> get copyWith =>

@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:easy_drink/cocktail/application/favorite_cocktails_notifier.dart';
 import 'package:easy_drink/core/presentation/widgets/centered_layout.dart';
 import 'package:easy_drink/core/presentation/widgets/header_text.dart';
+import 'package:easy_drink/local_auth/application/local_auth_notifier.dart';
 import 'package:easy_drink/main_view/core/presentation/widgets/card_scaffold.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -21,18 +22,15 @@ class SettingsPage extends StatelessWidget {
       bodyColor: Colors.white,
       bodyChild: width < 600
           ? const _SettingsList()
-          : Card(
-              elevation: 6,
-              clipBehavior: Clip.antiAlias,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(16),
-              ),
-              child: const CenteredLayout(
-                maxWidth: 500,
-                child: Padding(
-                  padding: EdgeInsets.all(32.0),
-                  child: _SettingsList(),
+          : CenteredLayout(
+              maxWidth: 500,
+              child: Card(
+                elevation: 6,
+                clipBehavior: Clip.antiAlias,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(16),
                 ),
+                child: const _SettingsList(),
               ),
             ),
     );
@@ -46,36 +44,49 @@ class _SettingsList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SettingsList(
-      shrinkWrap: true,
-      backgroundColor: const Color(0x55F1E5F3),
-      sections: [
-        SettingsSection(
-          title: "Generali",
-          titlePadding: const EdgeInsets.all(16),
-          titleTextStyle: Theme.of(context).textTheme.headline6,
-          tiles: [
-            SettingsTile(
-              title: 'Elimina i preferiti',
-              leading: const Icon(Icons.delete_rounded),
-              onPressed: (context) => _showConfirmDialog(context: context),
-            ),
-            SettingsTile.switchTile(
-              // TODO
-              title: 'Usa blocco app',
-              leading: const Icon(Icons.lock),
-              switchValue: false,
-              onToggle: (bool value) {},
-            ),
-            const SettingsTile(title: ''),
-            SettingsTile(
-              title: 'Grazie a:',
-              trailing: Image.asset("assets/images/the_cocktail_db_logo.png"),
-              onPressed: (_) => launch("https://www.thecocktaildb.com"),
-            ),
-          ],
-        ),
-      ],
+    return Consumer2<LocalAuthNotifier, LocalAuthState>(
+      builder: (context, notifier, state, child) => SettingsList(
+        shrinkWrap: true,
+        backgroundColor: const Color(0x55F1E5F3),
+        sections: [
+          SettingsSection(
+            title: "Generali",
+            titlePadding: const EdgeInsets.all(16),
+            titleTextStyle: Theme.of(context).textTheme.headline6,
+            tiles: [
+              SettingsTile(
+                title: 'Elimina i preferiti',
+                leading: const Icon(Icons.delete_rounded),
+                onPressed: (context) => _showConfirmDialog(context: context),
+              ),
+              SettingsTile.switchTile(
+                title: 'Usa blocco app',
+                leading: const Icon(Icons.lock),
+                switchValue: state.map(
+                  initial: (_) => false,
+                  disabled: (_) => false,
+                  enabled: (_) => true,
+                ),
+                onToggle: (bool isActive) async {
+                  bool canAuthenticate = false;
+                  if (isActive) {
+                    canAuthenticate = await notifier.tryAuthenticate();
+                  }
+                  if (canAuthenticate || !isActive) {
+                    isActive ? notifier.enable() : notifier.disable();
+                  }
+                },
+              ),
+              const SettingsTile(title: ''),
+              SettingsTile(
+                title: 'Grazie a:',
+                trailing: Image.asset("assets/images/the_cocktail_db_logo.png"),
+                onPressed: (_) => launch("https://www.thecocktaildb.com"),
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }

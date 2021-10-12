@@ -27,7 +27,7 @@ class _$ResponseDTOTearOff {
     );
   }
 
-  ResponseDTO fromJson(Map<String, Object> json) {
+  ResponseDTO fromJson(Map<String, Object?> json) {
     return ResponseDTO.fromJson(json);
   }
 }
@@ -126,14 +126,14 @@ class _$_ResponseDTO extends _ResponseDTO {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _ResponseDTO &&
-            (identical(other.drinks, drinks) ||
-                const DeepCollectionEquality().equals(other.drinks, drinks)));
+        (other.runtimeType == runtimeType &&
+            other is _ResponseDTO &&
+            const DeepCollectionEquality().equals(other.drinks, drinks));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(drinks);
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(drinks));
 
   @JsonKey(ignore: true)
   @override
@@ -154,7 +154,7 @@ abstract class _ResponseDTO extends ResponseDTO {
       _$_ResponseDTO.fromJson;
 
   @override
-  List<CocktailDTO>? get drinks => throw _privateConstructorUsedError;
+  List<CocktailDTO>? get drinks;
   @override
   @JsonKey(ignore: true)
   _$ResponseDTOCopyWith<_ResponseDTO> get copyWith =>

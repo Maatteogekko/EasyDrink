@@ -41,7 +41,7 @@ class CocktailsState with _$CocktailsState {
   }) = _Failure;
 }
 
-class CocktailsNotifier extends StateNotifier<CocktailsState> with LocatorMixin {
+class CocktailsNotifier extends StateNotifier<CocktailsState> {
   final CocktailRepository _repository;
 
   CocktailsNotifier(this._repository)

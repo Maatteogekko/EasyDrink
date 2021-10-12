@@ -153,24 +153,22 @@ class _$_Filter extends _Filter {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Filter &&
-            (identical(other.ingredients, ingredients) ||
-                const DeepCollectionEquality()
-                    .equals(other.ingredients, ingredients)) &&
-            (identical(other.categories, categories) ||
-                const DeepCollectionEquality()
-                    .equals(other.categories, categories)) &&
-            (identical(other.alcoholicList, alcoholicList) ||
-                const DeepCollectionEquality()
-                    .equals(other.alcoholicList, alcoholicList)));
+        (other.runtimeType == runtimeType &&
+            other is _Filter &&
+            const DeepCollectionEquality()
+                .equals(other.ingredients, ingredients) &&
+            const DeepCollectionEquality()
+                .equals(other.categories, categories) &&
+            const DeepCollectionEquality()
+                .equals(other.alcoholicList, alcoholicList));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(ingredients) ^
-      const DeepCollectionEquality().hash(categories) ^
-      const DeepCollectionEquality().hash(alcoholicList);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(ingredients),
+      const DeepCollectionEquality().hash(categories),
+      const DeepCollectionEquality().hash(alcoholicList));
 
   @JsonKey(ignore: true)
   @override
@@ -186,11 +184,11 @@ abstract class _Filter extends Filter {
   const _Filter._() : super._();
 
   @override
-  List<String> get ingredients => throw _privateConstructorUsedError;
+  List<String> get ingredients;
   @override
-  List<Category> get categories => throw _privateConstructorUsedError;
+  List<Category> get categories;
   @override
-  List<Alcoholic> get alcoholicList => throw _privateConstructorUsedError;
+  List<Alcoholic> get alcoholicList;
   @override
   @JsonKey(ignore: true)
   _$FilterCopyWith<_Filter> get copyWith => throw _privateConstructorUsedError;

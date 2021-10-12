@@ -100,7 +100,7 @@ class _$CocktailDTOTearOff {
     );
   }
 
-  CocktailDTO fromJson(Map<String, Object> json) {
+  CocktailDTO fromJson(Map<String, Object?> json) {
     return CocktailDTO.fromJson(json);
   }
 }
@@ -779,129 +779,124 @@ class _$_CocktailDTO extends _CocktailDTO {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _CocktailDTO &&
-            (identical(other.idDrink, idDrink) ||
-                const DeepCollectionEquality()
-                    .equals(other.idDrink, idDrink)) &&
+        (other.runtimeType == runtimeType &&
+            other is _CocktailDTO &&
+            (identical(other.idDrink, idDrink) || other.idDrink == idDrink) &&
             (identical(other.strDrink, strDrink) ||
-                const DeepCollectionEquality()
-                    .equals(other.strDrink, strDrink)) &&
+                other.strDrink == strDrink) &&
             (identical(other.strCategory, strCategory) ||
-                const DeepCollectionEquality()
-                    .equals(other.strCategory, strCategory)) &&
+                other.strCategory == strCategory) &&
             (identical(other.strAlcoholic, strAlcoholic) ||
-                const DeepCollectionEquality()
-                    .equals(other.strAlcoholic, strAlcoholic)) &&
+                other.strAlcoholic == strAlcoholic) &&
             (identical(other.strInstructions, strInstructions) ||
-                const DeepCollectionEquality()
-                    .equals(other.strInstructions, strInstructions)) &&
+                other.strInstructions == strInstructions) &&
             (identical(other.strInstructionsIT, strInstructionsIT) ||
-                const DeepCollectionEquality()
-                    .equals(other.strInstructionsIT, strInstructionsIT)) &&
+                other.strInstructionsIT == strInstructionsIT) &&
             (identical(other.strDrinkThumb, strDrinkThumb) ||
-                const DeepCollectionEquality()
-                    .equals(other.strDrinkThumb, strDrinkThumb)) &&
+                other.strDrinkThumb == strDrinkThumb) &&
             (identical(other.strIngredient1, strIngredient1) ||
-                const DeepCollectionEquality()
-                    .equals(other.strIngredient1, strIngredient1)) &&
+                other.strIngredient1 == strIngredient1) &&
             (identical(other.strIngredient2, strIngredient2) ||
-                const DeepCollectionEquality()
-                    .equals(other.strIngredient2, strIngredient2)) &&
+                other.strIngredient2 == strIngredient2) &&
             (identical(other.strIngredient3, strIngredient3) ||
-                const DeepCollectionEquality()
-                    .equals(other.strIngredient3, strIngredient3)) &&
+                other.strIngredient3 == strIngredient3) &&
             (identical(other.strIngredient4, strIngredient4) ||
-                const DeepCollectionEquality()
-                    .equals(other.strIngredient4, strIngredient4)) &&
+                other.strIngredient4 == strIngredient4) &&
             (identical(other.strIngredient5, strIngredient5) ||
-                const DeepCollectionEquality()
-                    .equals(other.strIngredient5, strIngredient5)) &&
+                other.strIngredient5 == strIngredient5) &&
             (identical(other.strIngredient6, strIngredient6) ||
-                const DeepCollectionEquality()
-                    .equals(other.strIngredient6, strIngredient6)) &&
+                other.strIngredient6 == strIngredient6) &&
             (identical(other.strIngredient7, strIngredient7) ||
-                const DeepCollectionEquality()
-                    .equals(other.strIngredient7, strIngredient7)) &&
+                other.strIngredient7 == strIngredient7) &&
             (identical(other.strIngredient8, strIngredient8) ||
-                const DeepCollectionEquality()
-                    .equals(other.strIngredient8, strIngredient8)) &&
+                other.strIngredient8 == strIngredient8) &&
             (identical(other.strIngredient9, strIngredient9) ||
-                const DeepCollectionEquality()
-                    .equals(other.strIngredient9, strIngredient9)) &&
+                other.strIngredient9 == strIngredient9) &&
             (identical(other.strIngredient10, strIngredient10) ||
-                const DeepCollectionEquality()
-                    .equals(other.strIngredient10, strIngredient10)) &&
+                other.strIngredient10 == strIngredient10) &&
             (identical(other.strIngredient11, strIngredient11) ||
-                const DeepCollectionEquality()
-                    .equals(other.strIngredient11, strIngredient11)) &&
+                other.strIngredient11 == strIngredient11) &&
             (identical(other.strIngredient12, strIngredient12) ||
-                const DeepCollectionEquality()
-                    .equals(other.strIngredient12, strIngredient12)) &&
+                other.strIngredient12 == strIngredient12) &&
             (identical(other.strIngredient13, strIngredient13) ||
-                const DeepCollectionEquality()
-                    .equals(other.strIngredient13, strIngredient13)) &&
+                other.strIngredient13 == strIngredient13) &&
             (identical(other.strIngredient14, strIngredient14) ||
-                const DeepCollectionEquality()
-                    .equals(other.strIngredient14, strIngredient14)) &&
+                other.strIngredient14 == strIngredient14) &&
             (identical(other.strIngredient15, strIngredient15) ||
-                const DeepCollectionEquality().equals(other.strIngredient15, strIngredient15)) &&
-            (identical(other.strMeasure1, strMeasure1) || const DeepCollectionEquality().equals(other.strMeasure1, strMeasure1)) &&
-            (identical(other.strMeasure2, strMeasure2) || const DeepCollectionEquality().equals(other.strMeasure2, strMeasure2)) &&
-            (identical(other.strMeasure3, strMeasure3) || const DeepCollectionEquality().equals(other.strMeasure3, strMeasure3)) &&
-            (identical(other.strMeasure4, strMeasure4) || const DeepCollectionEquality().equals(other.strMeasure4, strMeasure4)) &&
-            (identical(other.strMeasure5, strMeasure5) || const DeepCollectionEquality().equals(other.strMeasure5, strMeasure5)) &&
-            (identical(other.strMeasure6, strMeasure6) || const DeepCollectionEquality().equals(other.strMeasure6, strMeasure6)) &&
-            (identical(other.strMeasure7, strMeasure7) || const DeepCollectionEquality().equals(other.strMeasure7, strMeasure7)) &&
-            (identical(other.strMeasure8, strMeasure8) || const DeepCollectionEquality().equals(other.strMeasure8, strMeasure8)) &&
-            (identical(other.strMeasure9, strMeasure9) || const DeepCollectionEquality().equals(other.strMeasure9, strMeasure9)) &&
-            (identical(other.strMeasure10, strMeasure10) || const DeepCollectionEquality().equals(other.strMeasure10, strMeasure10)) &&
-            (identical(other.strMeasure11, strMeasure11) || const DeepCollectionEquality().equals(other.strMeasure11, strMeasure11)) &&
-            (identical(other.strMeasure12, strMeasure12) || const DeepCollectionEquality().equals(other.strMeasure12, strMeasure12)) &&
-            (identical(other.strMeasure13, strMeasure13) || const DeepCollectionEquality().equals(other.strMeasure13, strMeasure13)) &&
-            (identical(other.strMeasure14, strMeasure14) || const DeepCollectionEquality().equals(other.strMeasure14, strMeasure14)) &&
-            (identical(other.strMeasure15, strMeasure15) || const DeepCollectionEquality().equals(other.strMeasure15, strMeasure15)));
+                other.strIngredient15 == strIngredient15) &&
+            (identical(other.strMeasure1, strMeasure1) ||
+                other.strMeasure1 == strMeasure1) &&
+            (identical(other.strMeasure2, strMeasure2) ||
+                other.strMeasure2 == strMeasure2) &&
+            (identical(other.strMeasure3, strMeasure3) ||
+                other.strMeasure3 == strMeasure3) &&
+            (identical(other.strMeasure4, strMeasure4) ||
+                other.strMeasure4 == strMeasure4) &&
+            (identical(other.strMeasure5, strMeasure5) ||
+                other.strMeasure5 == strMeasure5) &&
+            (identical(other.strMeasure6, strMeasure6) ||
+                other.strMeasure6 == strMeasure6) &&
+            (identical(other.strMeasure7, strMeasure7) ||
+                other.strMeasure7 == strMeasure7) &&
+            (identical(other.strMeasure8, strMeasure8) ||
+                other.strMeasure8 == strMeasure8) &&
+            (identical(other.strMeasure9, strMeasure9) ||
+                other.strMeasure9 == strMeasure9) &&
+            (identical(other.strMeasure10, strMeasure10) ||
+                other.strMeasure10 == strMeasure10) &&
+            (identical(other.strMeasure11, strMeasure11) ||
+                other.strMeasure11 == strMeasure11) &&
+            (identical(other.strMeasure12, strMeasure12) ||
+                other.strMeasure12 == strMeasure12) &&
+            (identical(other.strMeasure13, strMeasure13) ||
+                other.strMeasure13 == strMeasure13) &&
+            (identical(other.strMeasure14, strMeasure14) ||
+                other.strMeasure14 == strMeasure14) &&
+            (identical(other.strMeasure15, strMeasure15) ||
+                other.strMeasure15 == strMeasure15));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(idDrink) ^
-      const DeepCollectionEquality().hash(strDrink) ^
-      const DeepCollectionEquality().hash(strCategory) ^
-      const DeepCollectionEquality().hash(strAlcoholic) ^
-      const DeepCollectionEquality().hash(strInstructions) ^
-      const DeepCollectionEquality().hash(strInstructionsIT) ^
-      const DeepCollectionEquality().hash(strDrinkThumb) ^
-      const DeepCollectionEquality().hash(strIngredient1) ^
-      const DeepCollectionEquality().hash(strIngredient2) ^
-      const DeepCollectionEquality().hash(strIngredient3) ^
-      const DeepCollectionEquality().hash(strIngredient4) ^
-      const DeepCollectionEquality().hash(strIngredient5) ^
-      const DeepCollectionEquality().hash(strIngredient6) ^
-      const DeepCollectionEquality().hash(strIngredient7) ^
-      const DeepCollectionEquality().hash(strIngredient8) ^
-      const DeepCollectionEquality().hash(strIngredient9) ^
-      const DeepCollectionEquality().hash(strIngredient10) ^
-      const DeepCollectionEquality().hash(strIngredient11) ^
-      const DeepCollectionEquality().hash(strIngredient12) ^
-      const DeepCollectionEquality().hash(strIngredient13) ^
-      const DeepCollectionEquality().hash(strIngredient14) ^
-      const DeepCollectionEquality().hash(strIngredient15) ^
-      const DeepCollectionEquality().hash(strMeasure1) ^
-      const DeepCollectionEquality().hash(strMeasure2) ^
-      const DeepCollectionEquality().hash(strMeasure3) ^
-      const DeepCollectionEquality().hash(strMeasure4) ^
-      const DeepCollectionEquality().hash(strMeasure5) ^
-      const DeepCollectionEquality().hash(strMeasure6) ^
-      const DeepCollectionEquality().hash(strMeasure7) ^
-      const DeepCollectionEquality().hash(strMeasure8) ^
-      const DeepCollectionEquality().hash(strMeasure9) ^
-      const DeepCollectionEquality().hash(strMeasure10) ^
-      const DeepCollectionEquality().hash(strMeasure11) ^
-      const DeepCollectionEquality().hash(strMeasure12) ^
-      const DeepCollectionEquality().hash(strMeasure13) ^
-      const DeepCollectionEquality().hash(strMeasure14) ^
-      const DeepCollectionEquality().hash(strMeasure15);
+  int get hashCode => Object.hashAll([
+        runtimeType,
+        idDrink,
+        strDrink,
+        strCategory,
+        strAlcoholic,
+        strInstructions,
+        strInstructionsIT,
+        strDrinkThumb,
+        strIngredient1,
+        strIngredient2,
+        strIngredient3,
+        strIngredient4,
+        strIngredient5,
+        strIngredient6,
+        strIngredient7,
+        strIngredient8,
+        strIngredient9,
+        strIngredient10,
+        strIngredient11,
+        strIngredient12,
+        strIngredient13,
+        strIngredient14,
+        strIngredient15,
+        strMeasure1,
+        strMeasure2,
+        strMeasure3,
+        strMeasure4,
+        strMeasure5,
+        strMeasure6,
+        strMeasure7,
+        strMeasure8,
+        strMeasure9,
+        strMeasure10,
+        strMeasure11,
+        strMeasure12,
+        strMeasure13,
+        strMeasure14,
+        strMeasure15
+      ]);
 
   @JsonKey(ignore: true)
   @override
@@ -959,79 +954,79 @@ abstract class _CocktailDTO extends CocktailDTO {
       _$_CocktailDTO.fromJson;
 
   @override
-  String get idDrink => throw _privateConstructorUsedError;
+  String get idDrink;
   @override
-  String get strDrink => throw _privateConstructorUsedError;
+  String get strDrink;
   @override
-  Category get strCategory => throw _privateConstructorUsedError;
+  Category get strCategory;
   @override
-  Alcoholic get strAlcoholic => throw _privateConstructorUsedError;
+  Alcoholic get strAlcoholic;
   @override
-  String get strInstructions => throw _privateConstructorUsedError;
+  String get strInstructions;
   @override
-  String? get strInstructionsIT => throw _privateConstructorUsedError;
+  String? get strInstructionsIT;
   @override
-  String get strDrinkThumb => throw _privateConstructorUsedError;
+  String get strDrinkThumb;
   @override
-  String? get strIngredient1 => throw _privateConstructorUsedError;
+  String? get strIngredient1;
   @override
-  String? get strIngredient2 => throw _privateConstructorUsedError;
+  String? get strIngredient2;
   @override
-  String? get strIngredient3 => throw _privateConstructorUsedError;
+  String? get strIngredient3;
   @override
-  String? get strIngredient4 => throw _privateConstructorUsedError;
+  String? get strIngredient4;
   @override
-  String? get strIngredient5 => throw _privateConstructorUsedError;
+  String? get strIngredient5;
   @override
-  String? get strIngredient6 => throw _privateConstructorUsedError;
+  String? get strIngredient6;
   @override
-  String? get strIngredient7 => throw _privateConstructorUsedError;
+  String? get strIngredient7;
   @override
-  String? get strIngredient8 => throw _privateConstructorUsedError;
+  String? get strIngredient8;
   @override
-  String? get strIngredient9 => throw _privateConstructorUsedError;
+  String? get strIngredient9;
   @override
-  String? get strIngredient10 => throw _privateConstructorUsedError;
+  String? get strIngredient10;
   @override
-  String? get strIngredient11 => throw _privateConstructorUsedError;
+  String? get strIngredient11;
   @override
-  String? get strIngredient12 => throw _privateConstructorUsedError;
+  String? get strIngredient12;
   @override
-  String? get strIngredient13 => throw _privateConstructorUsedError;
+  String? get strIngredient13;
   @override
-  String? get strIngredient14 => throw _privateConstructorUsedError;
+  String? get strIngredient14;
   @override
-  String? get strIngredient15 => throw _privateConstructorUsedError;
+  String? get strIngredient15;
   @override
-  String? get strMeasure1 => throw _privateConstructorUsedError;
+  String? get strMeasure1;
   @override
-  String? get strMeasure2 => throw _privateConstructorUsedError;
+  String? get strMeasure2;
   @override
-  String? get strMeasure3 => throw _privateConstructorUsedError;
+  String? get strMeasure3;
   @override
-  String? get strMeasure4 => throw _privateConstructorUsedError;
+  String? get strMeasure4;
   @override
-  String? get strMeasure5 => throw _privateConstructorUsedError;
+  String? get strMeasure5;
   @override
-  String? get strMeasure6 => throw _privateConstructorUsedError;
+  String? get strMeasure6;
   @override
-  String? get strMeasure7 => throw _privateConstructorUsedError;
+  String? get strMeasure7;
   @override
-  String? get strMeasure8 => throw _privateConstructorUsedError;
+  String? get strMeasure8;
   @override
-  String? get strMeasure9 => throw _privateConstructorUsedError;
+  String? get strMeasure9;
   @override
-  String? get strMeasure10 => throw _privateConstructorUsedError;
+  String? get strMeasure10;
   @override
-  String? get strMeasure11 => throw _privateConstructorUsedError;
+  String? get strMeasure11;
   @override
-  String? get strMeasure12 => throw _privateConstructorUsedError;
+  String? get strMeasure12;
   @override
-  String? get strMeasure13 => throw _privateConstructorUsedError;
+  String? get strMeasure13;
   @override
-  String? get strMeasure14 => throw _privateConstructorUsedError;
+  String? get strMeasure14;
   @override
-  String? get strMeasure15 => throw _privateConstructorUsedError;
+  String? get strMeasure15;
   @override
   @JsonKey(ignore: true)
   _$CocktailDTOCopyWith<_CocktailDTO> get copyWith =>
