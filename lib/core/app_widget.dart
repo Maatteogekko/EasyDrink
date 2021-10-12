@@ -1,4 +1,3 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:easy_drink/cocktail/application/cocktails_notifier.dart';
 import 'package:easy_drink/cocktail/application/favorite_cocktails_notifier.dart';
 import 'package:easy_drink/cocktail/infrastructure/cocktail_repository.dart';
