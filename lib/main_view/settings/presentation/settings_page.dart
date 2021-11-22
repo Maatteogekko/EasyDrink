@@ -110,7 +110,7 @@ Future<void> _showConfirmDialog({
           borderRadius: BorderRadius.circular(16),
         ),
         content: const Text(
-          'Cliccando su conferma tutti i tuoi preferiti sarrano eliminati difinitivamene.',
+          'Cliccando su conferma tutti i tuoi preferiti sarrano eliminati difinitivamente.',
           textAlign: TextAlign.center,
         ),
         actionsAlignment: MainAxisAlignment.center,
