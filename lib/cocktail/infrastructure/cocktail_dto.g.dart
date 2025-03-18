@@ -6,12 +6,12 @@ part of 'cocktail_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_CocktailDTO _$$_CocktailDTOFromJson(Map<String, dynamic> json) =>
-    _$_CocktailDTO(
+_$CocktailDTOImpl _$$CocktailDTOImplFromJson(Map<String, dynamic> json) =>
+    _$CocktailDTOImpl(
       idDrink: json['idDrink'] as String,
       strDrink: json['strDrink'] as String,
-      strCategory: _$enumDecode(_$CategoryEnumMap, json['strCategory']),
-      strAlcoholic: _$enumDecode(_$AlcoholicEnumMap, json['strAlcoholic']),
+      strCategory: $enumDecode(_$CategoryEnumMap, json['strCategory']),
+      strAlcoholic: $enumDecode(_$AlcoholicEnumMap, json['strAlcoholic']),
       strInstructions: json['strInstructions'] as String,
       strInstructionsIT: json['strInstructionsIT'] as String?,
       strDrinkThumb: json['strDrinkThumb'] as String,
@@ -47,12 +47,12 @@ _$_CocktailDTO _$$_CocktailDTOFromJson(Map<String, dynamic> json) =>
       strMeasure15: json['strMeasure15'] as String?,
     );
 
-Map<String, dynamic> _$$_CocktailDTOToJson(_$_CocktailDTO instance) =>
+Map<String, dynamic> _$$CocktailDTOImplToJson(_$CocktailDTOImpl instance) =>
     <String, dynamic>{
       'idDrink': instance.idDrink,
       'strDrink': instance.strDrink,
-      'strCategory': _$CategoryEnumMap[instance.strCategory],
-      'strAlcoholic': _$AlcoholicEnumMap[instance.strAlcoholic],
+      'strCategory': _$CategoryEnumMap[instance.strCategory]!,
+      'strAlcoholic': _$AlcoholicEnumMap[instance.strAlcoholic]!,
       'strInstructions': instance.strInstructions,
       'strInstructionsIT': instance.strInstructionsIT,
       'strDrinkThumb': instance.strDrinkThumb,
@@ -87,32 +87,6 @@ Map<String, dynamic> _$$_CocktailDTOToJson(_$_CocktailDTO instance) =>
       'strMeasure14': instance.strMeasure14,
       'strMeasure15': instance.strMeasure15,
     };
-
-K _$enumDecode<K, V>(
-  Map<K, V> enumValues,
-  Object? source, {
-  K? unknownValue,
-}) {
-  if (source == null) {
-    throw ArgumentError(
-      'A value must be provided. Supported values: '
-      '${enumValues.values.join(', ')}',
-    );
-  }
-
-  return enumValues.entries.singleWhere(
-    (e) => e.value == source,
-    orElse: () {
-      if (unknownValue == null) {
-        throw ArgumentError(
-          '`$source` is not one of the supported values: '
-          '${enumValues.values.join(', ')}',
-        );
-      }
-      return MapEntry(unknownValue, enumValues.values.first);
-    },
-  ).key;
-}
 
 const _$CategoryEnumMap = {
   Category.ordinaryDrink: 'Ordinary Drink',

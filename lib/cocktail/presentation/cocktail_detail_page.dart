@@ -12,6 +12,7 @@ import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:transparent_image/transparent_image.dart';
 
+@RoutePage()
 class CocktailDetailPage extends StatelessWidget {
   const CocktailDetailPage({
     required this.cocktail,
@@ -144,7 +145,7 @@ class _Body extends StatelessWidget {
               title: "Istruzioni",
               child: Text(
                 cocktail.instructions,
-                style: Theme.of(context).textTheme.bodyText2?.copyWith(fontSize: 17),
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontSize: 17),
                 textAlign: TextAlign.justify,
               ),
             ),
@@ -191,7 +192,7 @@ class _AlignedTextColumn extends StatelessWidget {
           .map(
             (e) => Text(
               e,
-              style: Theme.of(context).textTheme.bodyText2?.copyWith(fontSize: 17),
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontSize: 17),
             ),
           )
           .toList(),
@@ -224,7 +225,7 @@ class _Header extends StatelessWidget {
         ),
         centerTitle: true,
         automaticallyImplyLeading: false,
-        leading: const AutoBackButton(),
+        leading: const AutoLeadingButton(),
         actions: [
           IconButton(
             onPressed: () => showQrCodeDialog(
@@ -289,7 +290,7 @@ class _DetailCard extends StatelessWidget {
       children: [
         Text(
           title,
-          style: Theme.of(context).textTheme.subtitle2?.copyWith(fontSize: 17),
+          style: Theme.of(context).textTheme.titleSmall?.copyWith(fontSize: 17),
         ),
         Card(
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),

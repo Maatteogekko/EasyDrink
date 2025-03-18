@@ -17,7 +17,7 @@ class HeaderText extends StatelessWidget {
       ),
       child: Text(
         text,
-        style: Theme.of(context).textTheme.headline4?.copyWith(color: Colors.white),
+        style: Theme.of(context).textTheme.headlineMedium?.copyWith(color: Colors.white),
       ),
     );
   }

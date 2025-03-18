@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_drink/cocktail/domain/cocktail.dart';
-import 'package:easy_drink/core/presentation/routes/app_router.gr.dart';
+import 'package:easy_drink/core/presentation/routes/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 

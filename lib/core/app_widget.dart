@@ -2,6 +2,7 @@ import 'package:easy_drink/cocktail/application/cocktails_notifier.dart';
 import 'package:easy_drink/cocktail/application/favorite_cocktails_notifier.dart';
 import 'package:easy_drink/cocktail/infrastructure/cocktail_repository.dart';
 import 'package:easy_drink/core/infrastructure/sembast_database.dart';
+import 'package:easy_drink/core/presentation/routes/app_router.dart';
 import 'package:easy_drink/local_auth/application/local_auth_notifier.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +11,6 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_state_notifier/flutter_state_notifier.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'presentation/routes/app_router.gr.dart';
 
 class AppWidget extends StatelessWidget {
   AppWidget({Key? key}) : super(key: key);
@@ -77,8 +77,7 @@ class AppWidget extends StatelessWidget {
                     title: 'EasyDrink',
 
                     // navigation
-                    routerDelegate: _appRouter.delegate(),
-                    routeInformationParser: _appRouter.defaultRouteParser(),
+                    routerConfig: _appRouter.config(),
 
                     //localization
                     supportedLocales: const [

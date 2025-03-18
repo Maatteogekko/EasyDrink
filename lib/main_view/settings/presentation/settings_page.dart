@@ -9,6 +9,7 @@ import 'package:provider/provider.dart';
 import 'package:settings_ui/settings_ui.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+@RoutePage()
 class SettingsPage extends StatelessWidget {
   const SettingsPage({Key? key}) : super(key: key);
 
@@ -47,22 +48,23 @@ class _SettingsList extends StatelessWidget {
     return Consumer2<LocalAuthNotifier, LocalAuthState>(
       builder: (context, notifier, state, child) => SettingsList(
         shrinkWrap: true,
-        backgroundColor: const Color(0x55F1E5F3),
         sections: [
           SettingsSection(
-            title: "Generali",
-            titlePadding: const EdgeInsets.all(16),
-            titleTextStyle: Theme.of(context).textTheme.headline6,
+            title: Text(
+              "Generali",
+              style: Theme.of(context).textTheme.titleLarge,
+            ),
+            margin: const EdgeInsetsDirectional.all(16),
             tiles: [
               SettingsTile(
-                title: 'Elimina i preferiti',
+                title: const Text('Elimina i preferiti'),
                 leading: const Icon(Icons.delete_rounded),
                 onPressed: (context) => _showConfirmDialog(context: context),
               ),
               SettingsTile.switchTile(
-                title: 'Usa blocco app',
+                title: const Text('Usa blocco app'),
                 leading: const Icon(Icons.lock),
-                switchValue: state.map(
+                initialValue: state.map(
                   initial: (_) => false,
                   disabled: (_) => false,
                   enabled: (_) => true,
@@ -77,14 +79,14 @@ class _SettingsList extends StatelessWidget {
                   }
                 },
               ),
-              const SettingsTile(title: ''),
+              SettingsTile(title: const Text('')),
               SettingsTile(
-                title: 'Grazie a:',
+                title: const Text('Grazie a:'),
                 trailing: Image.asset(
                   "assets/images/the_cocktail_db_logo.png",
                   width: 200,
                 ),
-                onPressed: (_) => launch("https://www.thecocktaildb.com"),
+                onPressed: (_) => launchUrl(Uri.parse("https://www.thecocktaildb.com")),
               ),
             ],
           ),
@@ -110,7 +112,7 @@ Future<void> _showConfirmDialog({
           borderRadius: BorderRadius.circular(16),
         ),
         content: const Text(
-          'Cliccando su conferma tutti i tuoi preferiti sarrano eliminati difinitivamente.',
+          'Cliccando su conferma tutti i tuoi preferiti saranno eliminati definitivamente.',
           textAlign: TextAlign.center,
         ),
         actionsAlignment: MainAxisAlignment.center,

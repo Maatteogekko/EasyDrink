@@ -1,6 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'cocktail_dto.dart';
 
@@ -11,102 +12,11 @@ part of 'cocktail_dto.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 CocktailDTO _$CocktailDTOFromJson(Map<String, dynamic> json) {
   return _CocktailDTO.fromJson(json);
 }
-
-/// @nodoc
-class _$CocktailDTOTearOff {
-  const _$CocktailDTOTearOff();
-
-  _CocktailDTO call(
-      {required String idDrink,
-      required String strDrink,
-      required Category strCategory,
-      required Alcoholic strAlcoholic,
-      required String strInstructions,
-      required String? strInstructionsIT,
-      required String strDrinkThumb,
-      String? strIngredient1,
-      String? strIngredient2,
-      String? strIngredient3,
-      String? strIngredient4,
-      String? strIngredient5,
-      String? strIngredient6,
-      String? strIngredient7,
-      String? strIngredient8,
-      String? strIngredient9,
-      String? strIngredient10,
-      String? strIngredient11,
-      String? strIngredient12,
-      String? strIngredient13,
-      String? strIngredient14,
-      String? strIngredient15,
-      String? strMeasure1,
-      String? strMeasure2,
-      String? strMeasure3,
-      String? strMeasure4,
-      String? strMeasure5,
-      String? strMeasure6,
-      String? strMeasure7,
-      String? strMeasure8,
-      String? strMeasure9,
-      String? strMeasure10,
-      String? strMeasure11,
-      String? strMeasure12,
-      String? strMeasure13,
-      String? strMeasure14,
-      String? strMeasure15}) {
-    return _CocktailDTO(
-      idDrink: idDrink,
-      strDrink: strDrink,
-      strCategory: strCategory,
-      strAlcoholic: strAlcoholic,
-      strInstructions: strInstructions,
-      strInstructionsIT: strInstructionsIT,
-      strDrinkThumb: strDrinkThumb,
-      strIngredient1: strIngredient1,
-      strIngredient2: strIngredient2,
-      strIngredient3: strIngredient3,
-      strIngredient4: strIngredient4,
-      strIngredient5: strIngredient5,
-      strIngredient6: strIngredient6,
-      strIngredient7: strIngredient7,
-      strIngredient8: strIngredient8,
-      strIngredient9: strIngredient9,
-      strIngredient10: strIngredient10,
-      strIngredient11: strIngredient11,
-      strIngredient12: strIngredient12,
-      strIngredient13: strIngredient13,
-      strIngredient14: strIngredient14,
-      strIngredient15: strIngredient15,
-      strMeasure1: strMeasure1,
-      strMeasure2: strMeasure2,
-      strMeasure3: strMeasure3,
-      strMeasure4: strMeasure4,
-      strMeasure5: strMeasure5,
-      strMeasure6: strMeasure6,
-      strMeasure7: strMeasure7,
-      strMeasure8: strMeasure8,
-      strMeasure9: strMeasure9,
-      strMeasure10: strMeasure10,
-      strMeasure11: strMeasure11,
-      strMeasure12: strMeasure12,
-      strMeasure13: strMeasure13,
-      strMeasure14: strMeasure14,
-      strMeasure15: strMeasure15,
-    );
-  }
-
-  CocktailDTO fromJson(Map<String, Object?> json) {
-    return CocktailDTO.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $CocktailDTO = _$CocktailDTOTearOff();
 
 /// @nodoc
 mixin _$CocktailDTO {
@@ -158,7 +68,8 @@ mixin _$CocktailDTO {
 abstract class $CocktailDTOCopyWith<$Res> {
   factory $CocktailDTOCopyWith(
           CocktailDTO value, $Res Function(CocktailDTO) then) =
-      _$CocktailDTOCopyWithImpl<$Res>;
+      _$CocktailDTOCopyWithImpl<$Res, CocktailDTO>;
+  @useResult
   $Res call(
       {String idDrink,
       String strDrink,
@@ -200,22 +111,25 @@ abstract class $CocktailDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$CocktailDTOCopyWithImpl<$Res> implements $CocktailDTOCopyWith<$Res> {
+class _$CocktailDTOCopyWithImpl<$Res, $Val extends CocktailDTO>
+    implements $CocktailDTOCopyWith<$Res> {
   _$CocktailDTOCopyWithImpl(this._value, this._then);
 
-  final CocktailDTO _value;
   // ignore: unused_field
-  final $Res Function(CocktailDTO) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? idDrink = freezed,
-    Object? strDrink = freezed,
-    Object? strCategory = freezed,
-    Object? strAlcoholic = freezed,
-    Object? strInstructions = freezed,
+    Object? idDrink = null,
+    Object? strDrink = null,
+    Object? strCategory = null,
+    Object? strAlcoholic = null,
+    Object? strInstructions = null,
     Object? strInstructionsIT = freezed,
-    Object? strDrinkThumb = freezed,
+    Object? strDrinkThumb = null,
     Object? strIngredient1 = freezed,
     Object? strIngredient2 = freezed,
     Object? strIngredient3 = freezed,
@@ -248,165 +162,166 @@ class _$CocktailDTOCopyWithImpl<$Res> implements $CocktailDTOCopyWith<$Res> {
     Object? strMeasure15 = freezed,
   }) {
     return _then(_value.copyWith(
-      idDrink: idDrink == freezed
+      idDrink: null == idDrink
           ? _value.idDrink
           : idDrink // ignore: cast_nullable_to_non_nullable
               as String,
-      strDrink: strDrink == freezed
+      strDrink: null == strDrink
           ? _value.strDrink
           : strDrink // ignore: cast_nullable_to_non_nullable
               as String,
-      strCategory: strCategory == freezed
+      strCategory: null == strCategory
           ? _value.strCategory
           : strCategory // ignore: cast_nullable_to_non_nullable
               as Category,
-      strAlcoholic: strAlcoholic == freezed
+      strAlcoholic: null == strAlcoholic
           ? _value.strAlcoholic
           : strAlcoholic // ignore: cast_nullable_to_non_nullable
               as Alcoholic,
-      strInstructions: strInstructions == freezed
+      strInstructions: null == strInstructions
           ? _value.strInstructions
           : strInstructions // ignore: cast_nullable_to_non_nullable
               as String,
-      strInstructionsIT: strInstructionsIT == freezed
+      strInstructionsIT: freezed == strInstructionsIT
           ? _value.strInstructionsIT
           : strInstructionsIT // ignore: cast_nullable_to_non_nullable
               as String?,
-      strDrinkThumb: strDrinkThumb == freezed
+      strDrinkThumb: null == strDrinkThumb
           ? _value.strDrinkThumb
           : strDrinkThumb // ignore: cast_nullable_to_non_nullable
               as String,
-      strIngredient1: strIngredient1 == freezed
+      strIngredient1: freezed == strIngredient1
           ? _value.strIngredient1
           : strIngredient1 // ignore: cast_nullable_to_non_nullable
               as String?,
-      strIngredient2: strIngredient2 == freezed
+      strIngredient2: freezed == strIngredient2
           ? _value.strIngredient2
           : strIngredient2 // ignore: cast_nullable_to_non_nullable
               as String?,
-      strIngredient3: strIngredient3 == freezed
+      strIngredient3: freezed == strIngredient3
           ? _value.strIngredient3
           : strIngredient3 // ignore: cast_nullable_to_non_nullable
               as String?,
-      strIngredient4: strIngredient4 == freezed
+      strIngredient4: freezed == strIngredient4
           ? _value.strIngredient4
           : strIngredient4 // ignore: cast_nullable_to_non_nullable
               as String?,
-      strIngredient5: strIngredient5 == freezed
+      strIngredient5: freezed == strIngredient5
           ? _value.strIngredient5
           : strIngredient5 // ignore: cast_nullable_to_non_nullable
               as String?,
-      strIngredient6: strIngredient6 == freezed
+      strIngredient6: freezed == strIngredient6
           ? _value.strIngredient6
           : strIngredient6 // ignore: cast_nullable_to_non_nullable
               as String?,
-      strIngredient7: strIngredient7 == freezed
+      strIngredient7: freezed == strIngredient7
           ? _value.strIngredient7
           : strIngredient7 // ignore: cast_nullable_to_non_nullable
               as String?,
-      strIngredient8: strIngredient8 == freezed
+      strIngredient8: freezed == strIngredient8
           ? _value.strIngredient8
           : strIngredient8 // ignore: cast_nullable_to_non_nullable
               as String?,
-      strIngredient9: strIngredient9 == freezed
+      strIngredient9: freezed == strIngredient9
           ? _value.strIngredient9
           : strIngredient9 // ignore: cast_nullable_to_non_nullable
               as String?,
-      strIngredient10: strIngredient10 == freezed
+      strIngredient10: freezed == strIngredient10
           ? _value.strIngredient10
           : strIngredient10 // ignore: cast_nullable_to_non_nullable
               as String?,
-      strIngredient11: strIngredient11 == freezed
+      strIngredient11: freezed == strIngredient11
           ? _value.strIngredient11
           : strIngredient11 // ignore: cast_nullable_to_non_nullable
               as String?,
-      strIngredient12: strIngredient12 == freezed
+      strIngredient12: freezed == strIngredient12
           ? _value.strIngredient12
           : strIngredient12 // ignore: cast_nullable_to_non_nullable
               as String?,
-      strIngredient13: strIngredient13 == freezed
+      strIngredient13: freezed == strIngredient13
           ? _value.strIngredient13
           : strIngredient13 // ignore: cast_nullable_to_non_nullable
               as String?,
-      strIngredient14: strIngredient14 == freezed
+      strIngredient14: freezed == strIngredient14
           ? _value.strIngredient14
           : strIngredient14 // ignore: cast_nullable_to_non_nullable
               as String?,
-      strIngredient15: strIngredient15 == freezed
+      strIngredient15: freezed == strIngredient15
           ? _value.strIngredient15
           : strIngredient15 // ignore: cast_nullable_to_non_nullable
               as String?,
-      strMeasure1: strMeasure1 == freezed
+      strMeasure1: freezed == strMeasure1
           ? _value.strMeasure1
           : strMeasure1 // ignore: cast_nullable_to_non_nullable
               as String?,
-      strMeasure2: strMeasure2 == freezed
+      strMeasure2: freezed == strMeasure2
           ? _value.strMeasure2
           : strMeasure2 // ignore: cast_nullable_to_non_nullable
               as String?,
-      strMeasure3: strMeasure3 == freezed
+      strMeasure3: freezed == strMeasure3
           ? _value.strMeasure3
           : strMeasure3 // ignore: cast_nullable_to_non_nullable
               as String?,
-      strMeasure4: strMeasure4 == freezed
+      strMeasure4: freezed == strMeasure4
           ? _value.strMeasure4
           : strMeasure4 // ignore: cast_nullable_to_non_nullable
               as String?,
-      strMeasure5: strMeasure5 == freezed
+      strMeasure5: freezed == strMeasure5
           ? _value.strMeasure5
           : strMeasure5 // ignore: cast_nullable_to_non_nullable
               as String?,
-      strMeasure6: strMeasure6 == freezed
+      strMeasure6: freezed == strMeasure6
           ? _value.strMeasure6
           : strMeasure6 // ignore: cast_nullable_to_non_nullable
               as String?,
-      strMeasure7: strMeasure7 == freezed
+      strMeasure7: freezed == strMeasure7
           ? _value.strMeasure7
           : strMeasure7 // ignore: cast_nullable_to_non_nullable
               as String?,
-      strMeasure8: strMeasure8 == freezed
+      strMeasure8: freezed == strMeasure8
           ? _value.strMeasure8
           : strMeasure8 // ignore: cast_nullable_to_non_nullable
               as String?,
-      strMeasure9: strMeasure9 == freezed
+      strMeasure9: freezed == strMeasure9
           ? _value.strMeasure9
           : strMeasure9 // ignore: cast_nullable_to_non_nullable
               as String?,
-      strMeasure10: strMeasure10 == freezed
+      strMeasure10: freezed == strMeasure10
           ? _value.strMeasure10
           : strMeasure10 // ignore: cast_nullable_to_non_nullable
               as String?,
-      strMeasure11: strMeasure11 == freezed
+      strMeasure11: freezed == strMeasure11
           ? _value.strMeasure11
           : strMeasure11 // ignore: cast_nullable_to_non_nullable
               as String?,
-      strMeasure12: strMeasure12 == freezed
+      strMeasure12: freezed == strMeasure12
           ? _value.strMeasure12
           : strMeasure12 // ignore: cast_nullable_to_non_nullable
               as String?,
-      strMeasure13: strMeasure13 == freezed
+      strMeasure13: freezed == strMeasure13
           ? _value.strMeasure13
           : strMeasure13 // ignore: cast_nullable_to_non_nullable
               as String?,
-      strMeasure14: strMeasure14 == freezed
+      strMeasure14: freezed == strMeasure14
           ? _value.strMeasure14
           : strMeasure14 // ignore: cast_nullable_to_non_nullable
               as String?,
-      strMeasure15: strMeasure15 == freezed
+      strMeasure15: freezed == strMeasure15
           ? _value.strMeasure15
           : strMeasure15 // ignore: cast_nullable_to_non_nullable
               as String?,
-    ));
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$CocktailDTOCopyWith<$Res>
+abstract class _$$CocktailDTOImplCopyWith<$Res>
     implements $CocktailDTOCopyWith<$Res> {
-  factory _$CocktailDTOCopyWith(
-          _CocktailDTO value, $Res Function(_CocktailDTO) then) =
-      __$CocktailDTOCopyWithImpl<$Res>;
+  factory _$$CocktailDTOImplCopyWith(
+          _$CocktailDTOImpl value, $Res Function(_$CocktailDTOImpl) then) =
+      __$$CocktailDTOImplCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String idDrink,
       String strDrink,
@@ -448,24 +363,23 @@ abstract class _$CocktailDTOCopyWith<$Res>
 }
 
 /// @nodoc
-class __$CocktailDTOCopyWithImpl<$Res> extends _$CocktailDTOCopyWithImpl<$Res>
-    implements _$CocktailDTOCopyWith<$Res> {
-  __$CocktailDTOCopyWithImpl(
-      _CocktailDTO _value, $Res Function(_CocktailDTO) _then)
-      : super(_value, (v) => _then(v as _CocktailDTO));
+class __$$CocktailDTOImplCopyWithImpl<$Res>
+    extends _$CocktailDTOCopyWithImpl<$Res, _$CocktailDTOImpl>
+    implements _$$CocktailDTOImplCopyWith<$Res> {
+  __$$CocktailDTOImplCopyWithImpl(
+      _$CocktailDTOImpl _value, $Res Function(_$CocktailDTOImpl) _then)
+      : super(_value, _then);
 
-  @override
-  _CocktailDTO get _value => super._value as _CocktailDTO;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? idDrink = freezed,
-    Object? strDrink = freezed,
-    Object? strCategory = freezed,
-    Object? strAlcoholic = freezed,
-    Object? strInstructions = freezed,
+    Object? idDrink = null,
+    Object? strDrink = null,
+    Object? strCategory = null,
+    Object? strAlcoholic = null,
+    Object? strInstructions = null,
     Object? strInstructionsIT = freezed,
-    Object? strDrinkThumb = freezed,
+    Object? strDrinkThumb = null,
     Object? strIngredient1 = freezed,
     Object? strIngredient2 = freezed,
     Object? strIngredient3 = freezed,
@@ -497,152 +411,152 @@ class __$CocktailDTOCopyWithImpl<$Res> extends _$CocktailDTOCopyWithImpl<$Res>
     Object? strMeasure14 = freezed,
     Object? strMeasure15 = freezed,
   }) {
-    return _then(_CocktailDTO(
-      idDrink: idDrink == freezed
+    return _then(_$CocktailDTOImpl(
+      idDrink: null == idDrink
           ? _value.idDrink
           : idDrink // ignore: cast_nullable_to_non_nullable
               as String,
-      strDrink: strDrink == freezed
+      strDrink: null == strDrink
           ? _value.strDrink
           : strDrink // ignore: cast_nullable_to_non_nullable
               as String,
-      strCategory: strCategory == freezed
+      strCategory: null == strCategory
           ? _value.strCategory
           : strCategory // ignore: cast_nullable_to_non_nullable
               as Category,
-      strAlcoholic: strAlcoholic == freezed
+      strAlcoholic: null == strAlcoholic
           ? _value.strAlcoholic
           : strAlcoholic // ignore: cast_nullable_to_non_nullable
               as Alcoholic,
-      strInstructions: strInstructions == freezed
+      strInstructions: null == strInstructions
           ? _value.strInstructions
           : strInstructions // ignore: cast_nullable_to_non_nullable
               as String,
-      strInstructionsIT: strInstructionsIT == freezed
+      strInstructionsIT: freezed == strInstructionsIT
           ? _value.strInstructionsIT
           : strInstructionsIT // ignore: cast_nullable_to_non_nullable
               as String?,
-      strDrinkThumb: strDrinkThumb == freezed
+      strDrinkThumb: null == strDrinkThumb
           ? _value.strDrinkThumb
           : strDrinkThumb // ignore: cast_nullable_to_non_nullable
               as String,
-      strIngredient1: strIngredient1 == freezed
+      strIngredient1: freezed == strIngredient1
           ? _value.strIngredient1
           : strIngredient1 // ignore: cast_nullable_to_non_nullable
               as String?,
-      strIngredient2: strIngredient2 == freezed
+      strIngredient2: freezed == strIngredient2
           ? _value.strIngredient2
           : strIngredient2 // ignore: cast_nullable_to_non_nullable
               as String?,
-      strIngredient3: strIngredient3 == freezed
+      strIngredient3: freezed == strIngredient3
           ? _value.strIngredient3
           : strIngredient3 // ignore: cast_nullable_to_non_nullable
               as String?,
-      strIngredient4: strIngredient4 == freezed
+      strIngredient4: freezed == strIngredient4
           ? _value.strIngredient4
           : strIngredient4 // ignore: cast_nullable_to_non_nullable
               as String?,
-      strIngredient5: strIngredient5 == freezed
+      strIngredient5: freezed == strIngredient5
           ? _value.strIngredient5
           : strIngredient5 // ignore: cast_nullable_to_non_nullable
               as String?,
-      strIngredient6: strIngredient6 == freezed
+      strIngredient6: freezed == strIngredient6
           ? _value.strIngredient6
           : strIngredient6 // ignore: cast_nullable_to_non_nullable
               as String?,
-      strIngredient7: strIngredient7 == freezed
+      strIngredient7: freezed == strIngredient7
           ? _value.strIngredient7
           : strIngredient7 // ignore: cast_nullable_to_non_nullable
               as String?,
-      strIngredient8: strIngredient8 == freezed
+      strIngredient8: freezed == strIngredient8
           ? _value.strIngredient8
           : strIngredient8 // ignore: cast_nullable_to_non_nullable
               as String?,
-      strIngredient9: strIngredient9 == freezed
+      strIngredient9: freezed == strIngredient9
           ? _value.strIngredient9
           : strIngredient9 // ignore: cast_nullable_to_non_nullable
               as String?,
-      strIngredient10: strIngredient10 == freezed
+      strIngredient10: freezed == strIngredient10
           ? _value.strIngredient10
           : strIngredient10 // ignore: cast_nullable_to_non_nullable
               as String?,
-      strIngredient11: strIngredient11 == freezed
+      strIngredient11: freezed == strIngredient11
           ? _value.strIngredient11
           : strIngredient11 // ignore: cast_nullable_to_non_nullable
               as String?,
-      strIngredient12: strIngredient12 == freezed
+      strIngredient12: freezed == strIngredient12
           ? _value.strIngredient12
           : strIngredient12 // ignore: cast_nullable_to_non_nullable
               as String?,
-      strIngredient13: strIngredient13 == freezed
+      strIngredient13: freezed == strIngredient13
           ? _value.strIngredient13
           : strIngredient13 // ignore: cast_nullable_to_non_nullable
               as String?,
-      strIngredient14: strIngredient14 == freezed
+      strIngredient14: freezed == strIngredient14
           ? _value.strIngredient14
           : strIngredient14 // ignore: cast_nullable_to_non_nullable
               as String?,
-      strIngredient15: strIngredient15 == freezed
+      strIngredient15: freezed == strIngredient15
           ? _value.strIngredient15
           : strIngredient15 // ignore: cast_nullable_to_non_nullable
               as String?,
-      strMeasure1: strMeasure1 == freezed
+      strMeasure1: freezed == strMeasure1
           ? _value.strMeasure1
           : strMeasure1 // ignore: cast_nullable_to_non_nullable
               as String?,
-      strMeasure2: strMeasure2 == freezed
+      strMeasure2: freezed == strMeasure2
           ? _value.strMeasure2
           : strMeasure2 // ignore: cast_nullable_to_non_nullable
               as String?,
-      strMeasure3: strMeasure3 == freezed
+      strMeasure3: freezed == strMeasure3
           ? _value.strMeasure3
           : strMeasure3 // ignore: cast_nullable_to_non_nullable
               as String?,
-      strMeasure4: strMeasure4 == freezed
+      strMeasure4: freezed == strMeasure4
           ? _value.strMeasure4
           : strMeasure4 // ignore: cast_nullable_to_non_nullable
               as String?,
-      strMeasure5: strMeasure5 == freezed
+      strMeasure5: freezed == strMeasure5
           ? _value.strMeasure5
           : strMeasure5 // ignore: cast_nullable_to_non_nullable
               as String?,
-      strMeasure6: strMeasure6 == freezed
+      strMeasure6: freezed == strMeasure6
           ? _value.strMeasure6
           : strMeasure6 // ignore: cast_nullable_to_non_nullable
               as String?,
-      strMeasure7: strMeasure7 == freezed
+      strMeasure7: freezed == strMeasure7
           ? _value.strMeasure7
           : strMeasure7 // ignore: cast_nullable_to_non_nullable
               as String?,
-      strMeasure8: strMeasure8 == freezed
+      strMeasure8: freezed == strMeasure8
           ? _value.strMeasure8
           : strMeasure8 // ignore: cast_nullable_to_non_nullable
               as String?,
-      strMeasure9: strMeasure9 == freezed
+      strMeasure9: freezed == strMeasure9
           ? _value.strMeasure9
           : strMeasure9 // ignore: cast_nullable_to_non_nullable
               as String?,
-      strMeasure10: strMeasure10 == freezed
+      strMeasure10: freezed == strMeasure10
           ? _value.strMeasure10
           : strMeasure10 // ignore: cast_nullable_to_non_nullable
               as String?,
-      strMeasure11: strMeasure11 == freezed
+      strMeasure11: freezed == strMeasure11
           ? _value.strMeasure11
           : strMeasure11 // ignore: cast_nullable_to_non_nullable
               as String?,
-      strMeasure12: strMeasure12 == freezed
+      strMeasure12: freezed == strMeasure12
           ? _value.strMeasure12
           : strMeasure12 // ignore: cast_nullable_to_non_nullable
               as String?,
-      strMeasure13: strMeasure13 == freezed
+      strMeasure13: freezed == strMeasure13
           ? _value.strMeasure13
           : strMeasure13 // ignore: cast_nullable_to_non_nullable
               as String?,
-      strMeasure14: strMeasure14 == freezed
+      strMeasure14: freezed == strMeasure14
           ? _value.strMeasure14
           : strMeasure14 // ignore: cast_nullable_to_non_nullable
               as String?,
-      strMeasure15: strMeasure15 == freezed
+      strMeasure15: freezed == strMeasure15
           ? _value.strMeasure15
           : strMeasure15 // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -652,8 +566,8 @@ class __$CocktailDTOCopyWithImpl<$Res> extends _$CocktailDTOCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_CocktailDTO extends _CocktailDTO {
-  const _$_CocktailDTO(
+class _$CocktailDTOImpl extends _CocktailDTO {
+  const _$CocktailDTOImpl(
       {required this.idDrink,
       required this.strDrink,
       required this.strCategory,
@@ -693,8 +607,8 @@ class _$_CocktailDTO extends _CocktailDTO {
       this.strMeasure15})
       : super._();
 
-  factory _$_CocktailDTO.fromJson(Map<String, dynamic> json) =>
-      _$$_CocktailDTOFromJson(json);
+  factory _$CocktailDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CocktailDTOImplFromJson(json);
 
   @override
   final String idDrink;
@@ -777,10 +691,10 @@ class _$_CocktailDTO extends _CocktailDTO {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _CocktailDTO &&
+            other is _$CocktailDTOImpl &&
             (identical(other.idDrink, idDrink) || other.idDrink == idDrink) &&
             (identical(other.strDrink, strDrink) ||
                 other.strDrink == strDrink) &&
@@ -856,6 +770,7 @@ class _$_CocktailDTO extends _CocktailDTO {
                 other.strMeasure15 == strMeasure15));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
@@ -900,58 +815,61 @@ class _$_CocktailDTO extends _CocktailDTO {
 
   @JsonKey(ignore: true)
   @override
-  _$CocktailDTOCopyWith<_CocktailDTO> get copyWith =>
-      __$CocktailDTOCopyWithImpl<_CocktailDTO>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$CocktailDTOImplCopyWith<_$CocktailDTOImpl> get copyWith =>
+      __$$CocktailDTOImplCopyWithImpl<_$CocktailDTOImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CocktailDTOToJson(this);
+    return _$$CocktailDTOImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _CocktailDTO extends CocktailDTO {
   const factory _CocktailDTO(
-      {required String idDrink,
-      required String strDrink,
-      required Category strCategory,
-      required Alcoholic strAlcoholic,
-      required String strInstructions,
-      required String? strInstructionsIT,
-      required String strDrinkThumb,
-      String? strIngredient1,
-      String? strIngredient2,
-      String? strIngredient3,
-      String? strIngredient4,
-      String? strIngredient5,
-      String? strIngredient6,
-      String? strIngredient7,
-      String? strIngredient8,
-      String? strIngredient9,
-      String? strIngredient10,
-      String? strIngredient11,
-      String? strIngredient12,
-      String? strIngredient13,
-      String? strIngredient14,
-      String? strIngredient15,
-      String? strMeasure1,
-      String? strMeasure2,
-      String? strMeasure3,
-      String? strMeasure4,
-      String? strMeasure5,
-      String? strMeasure6,
-      String? strMeasure7,
-      String? strMeasure8,
-      String? strMeasure9,
-      String? strMeasure10,
-      String? strMeasure11,
-      String? strMeasure12,
-      String? strMeasure13,
-      String? strMeasure14,
-      String? strMeasure15}) = _$_CocktailDTO;
+      {required final String idDrink,
+      required final String strDrink,
+      required final Category strCategory,
+      required final Alcoholic strAlcoholic,
+      required final String strInstructions,
+      required final String? strInstructionsIT,
+      required final String strDrinkThumb,
+      final String? strIngredient1,
+      final String? strIngredient2,
+      final String? strIngredient3,
+      final String? strIngredient4,
+      final String? strIngredient5,
+      final String? strIngredient6,
+      final String? strIngredient7,
+      final String? strIngredient8,
+      final String? strIngredient9,
+      final String? strIngredient10,
+      final String? strIngredient11,
+      final String? strIngredient12,
+      final String? strIngredient13,
+      final String? strIngredient14,
+      final String? strIngredient15,
+      final String? strMeasure1,
+      final String? strMeasure2,
+      final String? strMeasure3,
+      final String? strMeasure4,
+      final String? strMeasure5,
+      final String? strMeasure6,
+      final String? strMeasure7,
+      final String? strMeasure8,
+      final String? strMeasure9,
+      final String? strMeasure10,
+      final String? strMeasure11,
+      final String? strMeasure12,
+      final String? strMeasure13,
+      final String? strMeasure14,
+      final String? strMeasure15}) = _$CocktailDTOImpl;
   const _CocktailDTO._() : super._();
 
   factory _CocktailDTO.fromJson(Map<String, dynamic> json) =
-      _$_CocktailDTO.fromJson;
+      _$CocktailDTOImpl.fromJson;
 
   @override
   String get idDrink;
@@ -1029,6 +947,6 @@ abstract class _CocktailDTO extends CocktailDTO {
   String? get strMeasure15;
   @override
   @JsonKey(ignore: true)
-  _$CocktailDTOCopyWith<_CocktailDTO> get copyWith =>
+  _$$CocktailDTOImplCopyWith<_$CocktailDTOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

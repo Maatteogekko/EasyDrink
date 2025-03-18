@@ -1,6 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'local_auth_notifier.dart';
 
@@ -11,33 +12,7 @@ part of 'local_auth_notifier.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$LocalAuthStateTearOff {
-  const _$LocalAuthStateTearOff();
-
-  _Initial initial() {
-    return const _Initial();
-  }
-
-  _Enabled enabled(
-      {required bool isAuthenticated, bool changedFromSettings = false}) {
-    return _Enabled(
-      isAuthenticated: isAuthenticated,
-      changedFromSettings: changedFromSettings,
-    );
-  }
-
-  _Disabled disabled({bool changedFromSettings = false}) {
-    return _Disabled(
-      changedFromSettings: changedFromSettings,
-    );
-  }
-}
-
-/// @nodoc
-const $LocalAuthState = _$LocalAuthStateTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$LocalAuthState {
@@ -51,9 +26,9 @@ mixin _$LocalAuthState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(bool isAuthenticated, bool changedFromSettings)? enabled,
-    TResult Function(bool changedFromSettings)? disabled,
+    TResult? Function()? initial,
+    TResult? Function(bool isAuthenticated, bool changedFromSettings)? enabled,
+    TResult? Function(bool changedFromSettings)? disabled,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -73,9 +48,9 @@ mixin _$LocalAuthState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Enabled value)? enabled,
-    TResult Function(_Disabled value)? disabled,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Enabled value)? enabled,
+    TResult? Function(_Disabled value)? disabled,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -92,39 +67,40 @@ mixin _$LocalAuthState {
 abstract class $LocalAuthStateCopyWith<$Res> {
   factory $LocalAuthStateCopyWith(
           LocalAuthState value, $Res Function(LocalAuthState) then) =
-      _$LocalAuthStateCopyWithImpl<$Res>;
+      _$LocalAuthStateCopyWithImpl<$Res, LocalAuthState>;
 }
 
 /// @nodoc
-class _$LocalAuthStateCopyWithImpl<$Res>
+class _$LocalAuthStateCopyWithImpl<$Res, $Val extends LocalAuthState>
     implements $LocalAuthStateCopyWith<$Res> {
   _$LocalAuthStateCopyWithImpl(this._value, this._then);
 
-  final LocalAuthState _value;
   // ignore: unused_field
-  final $Res Function(LocalAuthState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
-abstract class _$InitialCopyWith<$Res> {
-  factory _$InitialCopyWith(_Initial value, $Res Function(_Initial) then) =
-      __$InitialCopyWithImpl<$Res>;
+abstract class _$$InitialImplCopyWith<$Res> {
+  factory _$$InitialImplCopyWith(
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$InitialCopyWithImpl<$Res> extends _$LocalAuthStateCopyWithImpl<$Res>
-    implements _$InitialCopyWith<$Res> {
-  __$InitialCopyWithImpl(_Initial _value, $Res Function(_Initial) _then)
-      : super(_value, (v) => _then(v as _Initial));
-
-  @override
-  _Initial get _value => super._value as _Initial;
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$LocalAuthStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
+  __$$InitialImplCopyWithImpl(
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Initial implements _Initial {
-  const _$_Initial();
+class _$InitialImpl implements _Initial {
+  const _$InitialImpl();
 
   @override
   String toString() {
@@ -132,9 +108,9 @@ class _$_Initial implements _Initial {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _Initial);
+        (other.runtimeType == runtimeType && other is _$InitialImpl);
   }
 
   @override
@@ -154,9 +130,9 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(bool isAuthenticated, bool changedFromSettings)? enabled,
-    TResult Function(bool changedFromSettings)? disabled,
+    TResult? Function()? initial,
+    TResult? Function(bool isAuthenticated, bool changedFromSettings)? enabled,
+    TResult? Function(bool changedFromSettings)? disabled,
   }) {
     return initial?.call();
   }
@@ -188,9 +164,9 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Enabled value)? enabled,
-    TResult Function(_Disabled value)? disabled,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Enabled value)? enabled,
+    TResult? Function(_Disabled value)? disabled,
   }) {
     return initial?.call(this);
   }
@@ -211,36 +187,38 @@ class _$_Initial implements _Initial {
 }
 
 abstract class _Initial implements LocalAuthState {
-  const factory _Initial() = _$_Initial;
+  const factory _Initial() = _$InitialImpl;
 }
 
 /// @nodoc
-abstract class _$EnabledCopyWith<$Res> {
-  factory _$EnabledCopyWith(_Enabled value, $Res Function(_Enabled) then) =
-      __$EnabledCopyWithImpl<$Res>;
+abstract class _$$EnabledImplCopyWith<$Res> {
+  factory _$$EnabledImplCopyWith(
+          _$EnabledImpl value, $Res Function(_$EnabledImpl) then) =
+      __$$EnabledImplCopyWithImpl<$Res>;
+  @useResult
   $Res call({bool isAuthenticated, bool changedFromSettings});
 }
 
 /// @nodoc
-class __$EnabledCopyWithImpl<$Res> extends _$LocalAuthStateCopyWithImpl<$Res>
-    implements _$EnabledCopyWith<$Res> {
-  __$EnabledCopyWithImpl(_Enabled _value, $Res Function(_Enabled) _then)
-      : super(_value, (v) => _then(v as _Enabled));
+class __$$EnabledImplCopyWithImpl<$Res>
+    extends _$LocalAuthStateCopyWithImpl<$Res, _$EnabledImpl>
+    implements _$$EnabledImplCopyWith<$Res> {
+  __$$EnabledImplCopyWithImpl(
+      _$EnabledImpl _value, $Res Function(_$EnabledImpl) _then)
+      : super(_value, _then);
 
-  @override
-  _Enabled get _value => super._value as _Enabled;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? isAuthenticated = freezed,
-    Object? changedFromSettings = freezed,
+    Object? isAuthenticated = null,
+    Object? changedFromSettings = null,
   }) {
-    return _then(_Enabled(
-      isAuthenticated: isAuthenticated == freezed
+    return _then(_$EnabledImpl(
+      isAuthenticated: null == isAuthenticated
           ? _value.isAuthenticated
           : isAuthenticated // ignore: cast_nullable_to_non_nullable
               as bool,
-      changedFromSettings: changedFromSettings == freezed
+      changedFromSettings: null == changedFromSettings
           ? _value.changedFromSettings
           : changedFromSettings // ignore: cast_nullable_to_non_nullable
               as bool,
@@ -250,14 +228,14 @@ class __$EnabledCopyWithImpl<$Res> extends _$LocalAuthStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Enabled implements _Enabled {
-  const _$_Enabled(
+class _$EnabledImpl implements _Enabled {
+  const _$EnabledImpl(
       {required this.isAuthenticated, this.changedFromSettings = false});
 
   @override
   final bool isAuthenticated;
-  @JsonKey(defaultValue: false)
   @override
+  @JsonKey()
   final bool changedFromSettings;
 
   @override
@@ -266,10 +244,10 @@ class _$_Enabled implements _Enabled {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Enabled &&
+            other is _$EnabledImpl &&
             (identical(other.isAuthenticated, isAuthenticated) ||
                 other.isAuthenticated == isAuthenticated) &&
             (identical(other.changedFromSettings, changedFromSettings) ||
@@ -282,8 +260,9 @@ class _$_Enabled implements _Enabled {
 
   @JsonKey(ignore: true)
   @override
-  _$EnabledCopyWith<_Enabled> get copyWith =>
-      __$EnabledCopyWithImpl<_Enabled>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$EnabledImplCopyWith<_$EnabledImpl> get copyWith =>
+      __$$EnabledImplCopyWithImpl<_$EnabledImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -299,9 +278,9 @@ class _$_Enabled implements _Enabled {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(bool isAuthenticated, bool changedFromSettings)? enabled,
-    TResult Function(bool changedFromSettings)? disabled,
+    TResult? Function()? initial,
+    TResult? Function(bool isAuthenticated, bool changedFromSettings)? enabled,
+    TResult? Function(bool changedFromSettings)? disabled,
   }) {
     return enabled?.call(isAuthenticated, changedFromSettings);
   }
@@ -333,9 +312,9 @@ class _$_Enabled implements _Enabled {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Enabled value)? enabled,
-    TResult Function(_Disabled value)? disabled,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Enabled value)? enabled,
+    TResult? Function(_Disabled value)? disabled,
   }) {
     return enabled?.call(this);
   }
@@ -357,37 +336,40 @@ class _$_Enabled implements _Enabled {
 
 abstract class _Enabled implements LocalAuthState {
   const factory _Enabled(
-      {required bool isAuthenticated, bool changedFromSettings}) = _$_Enabled;
+      {required final bool isAuthenticated,
+      final bool changedFromSettings}) = _$EnabledImpl;
 
   bool get isAuthenticated;
   bool get changedFromSettings;
   @JsonKey(ignore: true)
-  _$EnabledCopyWith<_Enabled> get copyWith =>
+  _$$EnabledImplCopyWith<_$EnabledImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$DisabledCopyWith<$Res> {
-  factory _$DisabledCopyWith(_Disabled value, $Res Function(_Disabled) then) =
-      __$DisabledCopyWithImpl<$Res>;
+abstract class _$$DisabledImplCopyWith<$Res> {
+  factory _$$DisabledImplCopyWith(
+          _$DisabledImpl value, $Res Function(_$DisabledImpl) then) =
+      __$$DisabledImplCopyWithImpl<$Res>;
+  @useResult
   $Res call({bool changedFromSettings});
 }
 
 /// @nodoc
-class __$DisabledCopyWithImpl<$Res> extends _$LocalAuthStateCopyWithImpl<$Res>
-    implements _$DisabledCopyWith<$Res> {
-  __$DisabledCopyWithImpl(_Disabled _value, $Res Function(_Disabled) _then)
-      : super(_value, (v) => _then(v as _Disabled));
+class __$$DisabledImplCopyWithImpl<$Res>
+    extends _$LocalAuthStateCopyWithImpl<$Res, _$DisabledImpl>
+    implements _$$DisabledImplCopyWith<$Res> {
+  __$$DisabledImplCopyWithImpl(
+      _$DisabledImpl _value, $Res Function(_$DisabledImpl) _then)
+      : super(_value, _then);
 
-  @override
-  _Disabled get _value => super._value as _Disabled;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? changedFromSettings = freezed,
+    Object? changedFromSettings = null,
   }) {
-    return _then(_Disabled(
-      changedFromSettings: changedFromSettings == freezed
+    return _then(_$DisabledImpl(
+      changedFromSettings: null == changedFromSettings
           ? _value.changedFromSettings
           : changedFromSettings // ignore: cast_nullable_to_non_nullable
               as bool,
@@ -397,11 +379,11 @@ class __$DisabledCopyWithImpl<$Res> extends _$LocalAuthStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Disabled implements _Disabled {
-  const _$_Disabled({this.changedFromSettings = false});
+class _$DisabledImpl implements _Disabled {
+  const _$DisabledImpl({this.changedFromSettings = false});
 
-  @JsonKey(defaultValue: false)
   @override
+  @JsonKey()
   final bool changedFromSettings;
 
   @override
@@ -410,10 +392,10 @@ class _$_Disabled implements _Disabled {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Disabled &&
+            other is _$DisabledImpl &&
             (identical(other.changedFromSettings, changedFromSettings) ||
                 other.changedFromSettings == changedFromSettings));
   }
@@ -423,8 +405,9 @@ class _$_Disabled implements _Disabled {
 
   @JsonKey(ignore: true)
   @override
-  _$DisabledCopyWith<_Disabled> get copyWith =>
-      __$DisabledCopyWithImpl<_Disabled>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$DisabledImplCopyWith<_$DisabledImpl> get copyWith =>
+      __$$DisabledImplCopyWithImpl<_$DisabledImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -440,9 +423,9 @@ class _$_Disabled implements _Disabled {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(bool isAuthenticated, bool changedFromSettings)? enabled,
-    TResult Function(bool changedFromSettings)? disabled,
+    TResult? Function()? initial,
+    TResult? Function(bool isAuthenticated, bool changedFromSettings)? enabled,
+    TResult? Function(bool changedFromSettings)? disabled,
   }) {
     return disabled?.call(changedFromSettings);
   }
@@ -474,9 +457,9 @@ class _$_Disabled implements _Disabled {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Enabled value)? enabled,
-    TResult Function(_Disabled value)? disabled,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Enabled value)? enabled,
+    TResult? Function(_Disabled value)? disabled,
   }) {
     return disabled?.call(this);
   }
@@ -497,10 +480,10 @@ class _$_Disabled implements _Disabled {
 }
 
 abstract class _Disabled implements LocalAuthState {
-  const factory _Disabled({bool changedFromSettings}) = _$_Disabled;
+  const factory _Disabled({final bool changedFromSettings}) = _$DisabledImpl;
 
   bool get changedFromSettings;
   @JsonKey(ignore: true)
-  _$DisabledCopyWith<_Disabled> get copyWith =>
+  _$$DisabledImplCopyWith<_$DisabledImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

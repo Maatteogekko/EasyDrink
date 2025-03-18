@@ -41,7 +41,7 @@ class CocktailCard extends StatelessWidget {
                 child: Text(
                   cocktail.name,
                   textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.headline4?.copyWith(
+                  style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                         fontSize: 20,
                         fontWeight: FontWeight.w500,
                       ),

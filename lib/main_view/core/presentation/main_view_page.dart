@@ -1,9 +1,10 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:easy_drink/core/presentation/routes/app_router.gr.dart';
+import 'package:easy_drink/core/presentation/routes/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
+@RoutePage()
 class MainViewPage extends StatelessWidget {
   const MainViewPage({Key? key}) : super(key: key);
 
@@ -18,11 +19,11 @@ class MainViewPage extends StatelessWidget {
     return SafeArea(
       child: AutoTabsScaffold(
         routes: const [
-          HomeRouter(),
-          FavoritesRouter(),
-          SettingsRouter(),
+          HomeRoute(),
+          FavoritesRoute(),
+          SettingsRoute(),
         ],
-        builder: (context, child, animation) {
+        transitionBuilder: (context, child, animation) {
           return FadeTransition(
             opacity: animation,
             child: child,

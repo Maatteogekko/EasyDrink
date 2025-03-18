@@ -5,8 +5,9 @@ import 'package:easy_drink/local_auth/domain/local_auth_error.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:local_auth/auth_strings.dart';
 import 'package:local_auth/local_auth.dart';
+import 'package:local_auth_ios/local_auth_ios.dart';
+import 'package:local_auth_android/local_auth_android.dart';
 import 'package:open_settings/open_settings.dart';
 import 'package:provider/provider.dart';
 import 'package:sembast/sembast.dart';
@@ -17,8 +18,8 @@ part 'local_auth_notifier.freezed.dart';
 const _iosStrings = IOSAuthMessages(
   cancelButton: 'Annulla',
   goToSettingsButton: 'Impostazioni',
-  goToSettingsDescription: 'Perfavore imposta il tuo Touch ID.',
-  lockOut: 'Perfavore riabilita il tuo Touch ID',
+  goToSettingsDescription: 'Per favore imposta il tuo Touch ID.',
+  lockOut: 'Per favore riabilita il tuo Touch ID',
 );
 
 const _androidStrings = AndroidAuthMessages(
@@ -99,10 +100,14 @@ class LocalAuthNotifier extends StateNotifier<LocalAuthState> with LocatorMixin 
     final didAuthenticate = await _auth.authenticate(
       localizedReason: "Sblocca EasyDrink",
       // FIXME this does not work and throws a PlatformException
-      useErrorDialogs: true,
-      stickyAuth: true,
-      iOSAuthStrings: _iosStrings,
-      androidAuthStrings: _androidStrings,
+      authMessages: [
+        _iosStrings,
+        _androidStrings,
+      ],
+      options: const AuthenticationOptions(
+        useErrorDialogs: true,
+        stickyAuth: true,
+      ),
     );
 
     state = LocalAuthState.enabled(isAuthenticated: didAuthenticate);
@@ -115,10 +120,14 @@ class LocalAuthNotifier extends StateNotifier<LocalAuthState> with LocatorMixin 
       final didAuthenticate = await _auth.authenticate(
         localizedReason: "Sblocca EasyDrink",
         // FIXME this does not work and throws a PlatformException
-        useErrorDialogs: true,
-        stickyAuth: true,
-        androidAuthStrings: _androidStrings,
-        iOSAuthStrings: _iosStrings,
+        authMessages: [
+          _iosStrings,
+          _androidStrings,
+        ],
+        options: const AuthenticationOptions(
+          useErrorDialogs: true,
+          stickyAuth: true,
+        ),
       );
       return didAuthenticate;
     } on PlatformException {

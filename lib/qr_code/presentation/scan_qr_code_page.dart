@@ -2,14 +2,14 @@ import 'dart:io';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_drink/cocktail/application/favorite_cocktails_notifier.dart';
-import 'package:easy_drink/core/presentation/routes/app_router.gr.dart';
+import 'package:easy_drink/core/presentation/routes/app_router.dart';
 import 'package:easy_drink/core/presentation/widgets/header_text.dart';
 import 'package:easy_drink/main_view/core/presentation/widgets/card_scaffold.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 
+@RoutePage()
 class ScanQrCodePage extends StatefulWidget {
   const ScanQrCodePage({Key? key}) : super(key: key);
 
@@ -65,8 +65,8 @@ class _ScanQrCodePageState extends State<ScanQrCodePage> {
 
   @override
   Widget build(BuildContext context) {
-    if (result != null) {
-      context.read<FavoriteCocktailsNotifier>().getCocktail(result!.code).then(
+    if (result?.code != null) {
+      context.read<FavoriteCocktailsNotifier>().getCocktail(result!.code!).then(
         (cocktail) {
           if (cocktail != null) {
             if (!didPushDetailRoute) {
@@ -109,12 +109,12 @@ class _ScanQrCodePageState extends State<ScanQrCodePage> {
         child: CardScaffold(
           headerColor: Colors.amber,
           headerHeight: 65,
-          headerChild: Row(
+          headerChild: const Row(
             mainAxisAlignment: MainAxisAlignment.start,
-            children: const [
+            children: [
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 16),
-                child: AutoBackButton(
+                child: AutoLeadingButton(
                   color: Colors.white,
                 ),
               ),
@@ -150,7 +150,7 @@ class _ScanQrCodePageState extends State<ScanQrCodePage> {
       content: Text(
         text,
         textAlign: TextAlign.center,
-        style: Theme.of(context).textTheme.bodyText1?.copyWith(
+        style: Theme.of(context).textTheme.bodyLarge?.copyWith(
               color: Colors.black,
             ),
       ),

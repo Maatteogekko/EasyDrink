@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:easy_drink/cocktail/application/cocktails_notifier.dart';
 import 'package:easy_drink/cocktail/domain/alcoholic.dart';
 import 'package:easy_drink/cocktail/domain/category.dart';
@@ -5,11 +6,12 @@ import 'package:easy_drink/core/presentation/widgets/header_text.dart';
 import 'package:easy_drink/main_view/core/presentation/widgets/card_scaffold.dart';
 import 'package:easy_drink/cocktail/presentation/cocktail_list_view.dart';
 import 'package:easy_drink/main_view/home/presentation/search_bar.dart';
-import 'package:flutter/material.dart';
-import 'package:material_floating_search_bar/material_floating_search_bar.dart';
+import 'package:flutter/material.dart' hide SearchBar;
+import 'package:material_floating_search_bar_2/material_floating_search_bar_2.dart';
 import 'package:multi_select_flutter/multi_select_flutter.dart';
 import 'package:provider/provider.dart';
 
+@RoutePage()
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -56,7 +58,7 @@ class _HomePageState extends State<HomePage> {
           }
         },
         actions: [
-          _searchbarAction,
+          _searchBarAction,
         ],
         controller: _controller,
         title: HeaderText(_query ?? 'Home'),
@@ -81,7 +83,7 @@ class _HomePageState extends State<HomePage> {
                           _ListViewHeader(
                             child: Text(
                               'Che ne pensi di questi ?',
-                              style: Theme.of(context).textTheme.headline6,
+                              style: Theme.of(context).textTheme.titleLarge,
                             ),
                           ),
                           Flexible(
@@ -277,7 +279,7 @@ class _FilterSelector<V> extends StatelessWidget {
             title: Text(title),
             cancelText: Text(
               "Annulla",
-              style: Theme.of(context).textTheme.button?.copyWith(color: Colors.redAccent),
+              style: Theme.of(context).textTheme.labelLarge?.copyWith(color: Colors.redAccent),
             ),
             searchable: searchable,
             initialChildSize: initialChildSize,
@@ -293,7 +295,7 @@ class _FilterSelector<V> extends StatelessWidget {
   }
 }
 
-final _searchbarAction = FloatingSearchBarAction(
+final _searchBarAction = FloatingSearchBarAction(
   showIfOpened: true,
   builder: (context, animation) {
     final bar = FloatingSearchAppBar.of(context)!;

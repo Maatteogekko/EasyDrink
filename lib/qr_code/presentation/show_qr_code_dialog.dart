@@ -23,7 +23,7 @@ Future<void> showQrCodeDialog({
           width: 200,
           height: 200,
           alignment: Alignment.center,
-          child: QrImage(
+          child: QrImageView(
             data: cocktailId,
           ),
         ),
